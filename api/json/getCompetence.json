@@ -1,0 +1,606 @@
+[
+	{
+		"id": "13",
+		"label": "*Amministrazione csv"
+	},
+	{
+		"id": "-1",
+		"label": "*Base"
+	},
+	{
+		"id": "10",
+		"label": "*Base csv"
+	},
+	{
+		"id": "12",
+		"label": "*Commerciale csv"
+	},
+	{
+		"id": "8",
+		"label": "*Consulenza"
+	},
+	{
+		"id": "95",
+		"label": "*Data Center SMI"
+	},
+	{
+		"id": "67",
+		"label": "*Galileo Beta"
+	},
+	{
+		"id": "68",
+		"label": "*Galileo DWT"
+	},
+	{
+		"id": "66",
+		"label": "*Galileo Std"
+	},
+	{
+		"id": "22",
+		"label": "*GMM csv"
+	},
+	{
+		"id": "46",
+		"label": "*Gruppo Alberto Luvisetto"
+	},
+	{
+		"id": "91",
+		"label": "*Gruppo Andrea Randi"
+	},
+	{
+		"id": "89",
+		"label": "*Gruppo Angelozzi Ambra"
+	},
+	{
+		"id": "44",
+		"label": "*Gruppo Arianna Guerra"
+	},
+	{
+		"id": "112",
+		"label": "*Gruppo Denis Billato"
+	},
+	{
+		"id": "36",
+		"label": "*Gruppo Domenico De Sio"
+	},
+	{
+		"id": "118",
+		"label": "*Gruppo Elisa Anna Selmo"
+	},
+	{
+		"id": "108",
+		"label": "*Gruppo Elisa Galvan"
+	},
+	{
+		"id": "51",
+		"label": "*Gruppo Emilio Noaro"
+	},
+	{
+		"id": "110",
+		"label": "*Gruppo Enrico Raffaello"
+	},
+	{
+		"id": "31",
+		"label": "*Gruppo Federico Casarotto"
+	},
+	{
+		"id": "34",
+		"label": "*Gruppo Federico Dal Lago"
+	},
+	{
+		"id": "72",
+		"label": "*Gruppo Francesca Cuomo"
+	},
+	{
+		"id": "81",
+		"label": "*Gruppo Francesco Zorzan"
+	},
+	{
+		"id": "98",
+		"label": "*Gruppo Gabriele Fallica"
+	},
+	{
+		"id": "106",
+		"label": "*Gruppo Giacomo Mattiuzzi"
+	},
+	{
+		"id": "28",
+		"label": "*Gruppo Giorgio Bonacini"
+	},
+	{
+		"id": "49",
+		"label": "*Gruppo Giovanni Mattiazzo"
+	},
+	{
+		"id": "54",
+		"label": "*Gruppo Giuliano Rui"
+	},
+	{
+		"id": "38",
+		"label": "*Gruppo Isabella Di Sopra"
+	},
+	{
+		"id": "90",
+		"label": "*Gruppo Leonardo Pasetto"
+	},
+	{
+		"id": "107",
+		"label": "*Gruppo Luigi Francesconi"
+	},
+	{
+		"id": "37",
+		"label": "*Gruppo Marco Di Mari"
+	},
+	{
+		"id": "87",
+		"label": "*Gruppo Marco Griguolo"
+	},
+	{
+		"id": "128",
+		"label": "*Gruppo Marco Poletto"
+	},
+	{
+		"id": "103",
+		"label": "*Gruppo Maria Vedelago"
+	},
+	{
+		"id": "122",
+		"label": "*Gruppo Mariagrazia Manganiello"
+	},
+	{
+		"id": "102",
+		"label": "*Gruppo Massimo Bertinazzi"
+	},
+	{
+		"id": "26",
+		"label": "*Gruppo Nazzareno Bedin"
+	},
+	{
+		"id": "62",
+		"label": "*Gruppo Piera Falcomer"
+	},
+	{
+		"id": "55",
+		"label": "*Gruppo Piergiorgio Sandri"
+	},
+	{
+		"id": "25",
+		"label": "*Gruppo Renato Bardin"
+	},
+	{
+		"id": "105",
+		"label": "*Gruppo Riccardo Salata"
+	},
+	{
+		"id": "79",
+		"label": "*Gruppo Robert Hatton"
+	},
+	{
+		"id": "104",
+		"label": "*Gruppo Samuele Accordini"
+	},
+	{
+		"id": "50",
+		"label": "*Gruppo Sergio Mieli"
+	},
+	{
+		"id": "147",
+		"label": "*Gruppo Sergio Mieli"
+	},
+	{
+		"id": "48",
+		"label": "*Gruppo Stefano Marzullo"
+	},
+	{
+		"id": "57",
+		"label": "*Gruppo Vanzio Turcato"
+	},
+	{
+		"id": "70",
+		"label": "*Itech CSV"
+	},
+	{
+		"id": "92",
+		"label": "*JGalileo"
+	},
+	{
+		"id": "11",
+		"label": "*Produzione csv"
+	},
+	{
+		"id": "14",
+		"label": "*Skedula csv"
+	},
+	{
+		"id": "4",
+		"label": "*Smiprinter \/ SD"
+	},
+	{
+		"id": "127",
+		"label": "*SOP"
+	},
+	{
+		"id": "77",
+		"label": "*Web csv"
+	},
+	{
+		"id": "69",
+		"label": "*Workflow"
+	},
+	{
+		"id": "6",
+		"label": "Addestramento"
+	},
+	{
+		"id": "19",
+		"label": "Aggiornamenti Normative"
+	},
+	{
+		"id": "99",
+		"label": "App"
+	},
+	{
+		"id": "94",
+		"label": "APS"
+	},
+	{
+		"id": "2",
+		"label": "Assistenza"
+	},
+	{
+		"id": "63",
+		"label": "Assistenza Vinicoli"
+	},
+	{
+		"id": "146",
+		"label": "Attivit\u00e0 Contratti itech"
+	},
+	{
+		"id": "83",
+		"label": "B2B"
+	},
+	{
+		"id": "100",
+		"label": "B2C e siti"
+	},
+	{
+		"id": "145",
+		"label": "Business Place"
+	},
+	{
+		"id": "93",
+		"label": "Cantieri"
+	},
+	{
+		"id": "3",
+		"label": "Correzioni \/ Anomalie"
+	},
+	{
+		"id": "9",
+		"label": "Crm CSV"
+	},
+	{
+		"id": "117",
+		"label": "CRM Notes"
+	},
+	{
+		"id": "129",
+		"label": "Discovery XChange"
+	},
+	{
+		"id": "119",
+		"label": "ECM"
+	},
+	{
+		"id": "16",
+		"label": "Factory Control csv"
+	},
+	{
+		"id": "130",
+		"label": "Gestione Cantine"
+	},
+	{
+		"id": "21",
+		"label": "GPM \/ JPM"
+	},
+	{
+		"id": "82",
+		"label": "Gruppo Alberto Veronese"
+	},
+	{
+		"id": "40",
+		"label": "Gruppo Alessandro Fugazza"
+	},
+	{
+		"id": "116",
+		"label": "Gruppo Alessandro Sisti"
+	},
+	{
+		"id": "97",
+		"label": "Gruppo Alessia Zandon\u00e0"
+	},
+	{
+		"id": "78",
+		"label": "Gruppo Andrea Balzan"
+	},
+	{
+		"id": "32",
+		"label": "Gruppo Andrea Casonato"
+	},
+	{
+		"id": "33",
+		"label": "Gruppo Anna Colombo"
+	},
+	{
+		"id": "124",
+		"label": "Gruppo Attilio Salvaro"
+	},
+	{
+		"id": "123",
+		"label": "Gruppo Carlo Da Campo"
+	},
+	{
+		"id": "132",
+		"label": "Gruppo Chiara Baron"
+	},
+	{
+		"id": "141",
+		"label": "Gruppo Cinzia Benin"
+	},
+	{
+		"id": "27",
+		"label": "Gruppo Cristian Beltrami"
+	},
+	{
+		"id": "84",
+		"label": "Gruppo Davide Celi"
+	},
+	{
+		"id": "115",
+		"label": "Gruppo Devis Contro"
+	},
+	{
+		"id": "86",
+		"label": "Gruppo Erika Meneghin"
+	},
+	{
+		"id": "35",
+		"label": "Gruppo Fabrizio De Guio"
+	},
+	{
+		"id": "121",
+		"label": "Gruppo Federica Bonotto"
+	},
+	{
+		"id": "76",
+		"label": "Gruppo Floriano Bedin"
+	},
+	{
+		"id": "30",
+		"label": "Gruppo Francesco Brunello"
+	},
+	{
+		"id": "29",
+		"label": "Gruppo Gaetano Bordin"
+	},
+	{
+		"id": "101",
+		"label": "Gruppo Gastone Dall'Igna"
+	},
+	{
+		"id": "59",
+		"label": "Gruppo Gianna Zecchin"
+	},
+	{
+		"id": "42",
+		"label": "Gruppo Giovanna Gigante"
+	},
+	{
+		"id": "148",
+		"label": "Gruppo Giuseppe Strafezza"
+	},
+	{
+		"id": "85",
+		"label": "Gruppo Guido Cariolato"
+	},
+	{
+		"id": "53",
+		"label": "Gruppo Iviza Pilan"
+	},
+	{
+		"id": "71",
+		"label": "Gruppo Luca Marcazzan"
+	},
+	{
+		"id": "131",
+		"label": "Gruppo Luca Marzaro"
+	},
+	{
+		"id": "88",
+		"label": "Gruppo Luca Romano"
+	},
+	{
+		"id": "45",
+		"label": "Gruppo Luciano Lucarda"
+	},
+	{
+		"id": "60",
+		"label": "Gruppo Manuele Zulian"
+	},
+	{
+		"id": "109",
+		"label": "Gruppo Mara Pietrobon"
+	},
+	{
+		"id": "75",
+		"label": "Gruppo Marco Corradini"
+	},
+	{
+		"id": "39",
+		"label": "Gruppo Marco Ferrari"
+	},
+	{
+		"id": "47",
+		"label": "Gruppo Marco Magnabosco"
+	},
+	{
+		"id": "52",
+		"label": "Gruppo Maria Perissinotti"
+	},
+	{
+		"id": "80",
+		"label": "Gruppo Marina Saija"
+	},
+	{
+		"id": "43",
+		"label": "Gruppo Massimiliano Guarda"
+	},
+	{
+		"id": "56",
+		"label": "Gruppo Massimo Tognini"
+	},
+	{
+		"id": "61",
+		"label": "Gruppo Massimo Zulian"
+	},
+	{
+		"id": "74",
+		"label": "Gruppo Matteo Verlato"
+	},
+	{
+		"id": "96",
+		"label": "Gruppo Matteo Vermiglio"
+	},
+	{
+		"id": "133",
+		"label": "Gruppo Maurizio Magnaguagno"
+	},
+	{
+		"id": "125",
+		"label": "Gruppo Michele Romano"
+	},
+	{
+		"id": "113",
+		"label": "Gruppo Mirko Scognamiglio"
+	},
+	{
+		"id": "111",
+		"label": "Gruppo Piergiorgio Sandri"
+	},
+	{
+		"id": "136",
+		"label": "Gruppo Rigert Kambo"
+	},
+	{
+		"id": "140",
+		"label": "Gruppo Roberta Ermacora"
+	},
+	{
+		"id": "137",
+		"label": "Gruppo Sabrina Grotto"
+	},
+	{
+		"id": "150",
+		"label": "Gruppo Sara Bilato"
+	},
+	{
+		"id": "142",
+		"label": "Gruppo Sistemisti DQ"
+	},
+	{
+		"id": "144",
+		"label": "Gruppo sistemisti ECM"
+	},
+	{
+		"id": "135",
+		"label": "Gruppo sistemisti JMES"
+	},
+	{
+		"id": "134",
+		"label": "Gruppo sistemisti JPA\/JPM"
+	},
+	{
+		"id": "143",
+		"label": "Gruppo sistemisti NEXTBI"
+	},
+	{
+		"id": "58",
+		"label": "Gruppo Stefano Zaffaina"
+	},
+	{
+		"id": "41",
+		"label": "Gruppo Valter Gaiot"
+	},
+	{
+		"id": "151",
+		"label": "Gruppo Vittorio Rizzi"
+	},
+	{
+		"id": "24",
+		"label": "Help-Desk Itech"
+	},
+	{
+		"id": "1",
+		"label": "ITech"
+	},
+	{
+		"id": "65",
+		"label": "Itech Smi"
+	},
+	{
+		"id": "126",
+		"label": "JMES"
+	},
+	{
+		"id": "18",
+		"label": "Moda csv"
+	},
+	{
+		"id": "149",
+		"label": "PIM"
+	},
+	{
+		"id": "64",
+		"label": "Qlik"
+	},
+	{
+		"id": "17",
+		"label": "Qualit\u00e0"
+	},
+	{
+		"id": "5",
+		"label": "Richiesta Programmazione"
+	},
+	{
+		"id": "-2",
+		"label": "Segnalazione"
+	},
+	{
+		"id": "139",
+		"label": "Sistemi Informativi SMI"
+	},
+	{
+		"id": "73",
+		"label": "Smiprinter \/ JSpider \/ SD csv"
+	},
+	{
+		"id": "114",
+		"label": "SOC"
+	},
+	{
+		"id": "7",
+		"label": "Sorgenti"
+	},
+	{
+		"id": "20",
+		"label": "Statistiche Web"
+	},
+	{
+		"id": "15",
+		"label": "Tce csv"
+	},
+	{
+		"id": "23",
+		"label": "Workflow \/ JPA"
+	}
+]

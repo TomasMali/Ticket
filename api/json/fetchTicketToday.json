@@ -1,0 +1,148 @@
+{
+	"headers": {
+		"ticket": {
+			"id": "ticket",
+			"label": "Ticket",
+			"sortKey": "ticket",
+			"checked": true,
+			"sortType": "number",
+			"align": "right",
+			"numberPattern": null,
+			"classValue": null
+		},
+		"data": {
+			"id": "data",
+			"label": "Data di apertura",
+			"sortKey": "segnalazioni_apertura",
+			"checked": true,
+			"sortType": "string",
+			"sort": "desc",
+			"align": "right"
+		},
+		"stato": {
+			"id": "stato",
+			"label": "Stato",
+			"sortKey": "stati_ordine",
+			"checked": true,
+			"sortType": "number",
+			"align": "left"
+		},
+		"cliente": {
+			"id": "cliente",
+			"label": "Cliente",
+			"sortKey": "cliente",
+			"checked": true,
+			"sortType": "string",
+			"align": "left",
+			"classValue": "cliente_canoni"
+		},
+		"oggetto": {
+			"id": "oggetto",
+			"label": "Oggetto",
+			"sortKey": "oggetto",
+			"checked": true,
+			"sortType": "string",
+			"align": "left"
+		},
+		"segnalatore": {
+			"id": "segnalatore",
+			"label": "Segnalatore",
+			"sortKey": "segnalatore",
+			"checked": true,
+			"sortType": "string",
+			"align": "left"
+		},
+		"gravita": {
+			"id": "gravita",
+			"label": "Gravit\u00e0",
+			"sortKey": "gravita_ordine",
+			"checked": true,
+			"sortType": "number",
+			"align": "left"
+		},
+		"priorita": {
+			"id": "priorita",
+			"label": "Priorit\u00e0",
+			"sortKey": "priorita",
+			"checked": true,
+			"sortType": "number",
+			"align": "left"
+		},
+		"competenza": {
+			"id": "competenza",
+			"label": "Competenza",
+			"sortKey": "competenza",
+			"checked": true,
+			"sortType": "string",
+			"align": "left"
+		}
+	},
+	"data": [
+		{
+			"id": "456634",
+			"ticket": "456634",
+			"data": "12\/08\/2022 10:43:23",
+			"segnalazioni_apertura": "2022-08-12 10:43:23",
+			"stato": "LETTO",
+			"stati_ordine": "2",
+			"cliente": "PALADIN VP S.P.A.",
+			"cliente_canoni": "a___",
+			"oggetto": "errore salvataggio dati",
+			"segnalatore": "PALADIN S.P.A.",
+			"gravita": "ROSSO",
+			"gravita_ordine": "5",
+			"priorita": null,
+			"competenza": "ITech"
+		},
+		{
+			"id": "456632",
+			"ticket": "456632",
+			"data": "12\/08\/2022 10:10:23",
+			"segnalazioni_apertura": "2022-08-12 10:10:23",
+			"stato": "CHIUSO",
+			"stati_ordine": "10",
+			"cliente": "BOTTEGA S.P.A.",
+			"cliente_canoni": "a___",
+			"oggetto": "POWER8 LED ARANCIONE ACCESO",
+			"segnalatore": "BOTTEGA S.P.A.",
+			"gravita": "GIALLO",
+			"gravita_ordine": "4",
+			"priorita": null,
+			"competenza": "ITech"
+		},
+		{
+			"id": "456620",
+			"ticket": "456620",
+			"data": "12\/08\/2022 09:08:50",
+			"segnalazioni_apertura": "2022-08-12 09:08:50",
+			"stato": "NUOVO",
+			"stati_ordine": "1",
+			"cliente": "ANTONIO ZAMPERLA S.P.A.",
+			"cliente_canoni": "a___",
+			"oggetto": "Installazione PTF MF69402 macchina di Backup (219A88V) causa dischi in Degrad",
+			"segnalatore": "Mazzarolo Riccardo",
+			"gravita": "GIALLO",
+			"gravita_ordine": "4",
+			"priorita": null,
+			"competenza": "ITech"
+		},
+		{
+			"id": "456617",
+			"ticket": "456617",
+			"data": "12\/08\/2022 08:48:29",
+			"segnalazioni_apertura": "2022-08-12 08:48:29",
+			"stato": "LETTO",
+			"stati_ordine": "2",
+			"cliente": "SERIN S.R.L.",
+			"cliente_canoni": "a___",
+			"oggetto": "Rottura Disco Power 7",
+			"segnalatore": "SERIN S.R.L.",
+			"gravita": "ROSSO",
+			"gravita_ordine": "5",
+			"priorita": null,
+			"competenza": "ITech"
+		}
+	],
+	"total": "4",
+	"timestamp": "1660294262"
+}
