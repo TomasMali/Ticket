@@ -83,7 +83,7 @@ def getAllFilters():
 
 
 # Delete a single filter
-def deleteFilter(id):
+def deleteFilter(telid, id):
         connection = getConn()
         cursor = connection.cursor()
 
@@ -92,8 +92,8 @@ def deleteFilter(id):
         cursor.execute(sql_delete_query, (id,))
         connection.commit()
 
-        sql_delete_query = """Delete from filters where fid = %s"""
-        cursor.execute(sql_delete_query, (id,))
+        sql_delete_query = """Delete from filters where tid= %s and fid = %s"""
+        cursor.execute(sql_delete_query, (telid,id))
         connection.commit()
         count = cursor.rowcount
         print(count, "Record deleted successfully ")

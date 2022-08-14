@@ -2,7 +2,7 @@
 import time
 import telepot
 from telepot.loop import MessageLoop
-import esterno
+import keyboards
 from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 
 import filter
@@ -28,31 +28,46 @@ def on_chat_message(msg):
     print(content_type)
     if content_type == 'text':
        if msg['text'] == '/start':
-            keyboard = esterno.getKeyboard()
+            keyboard = keyboards.getKeyboard()
             if user.insertUser(user_id, first_name, last_name):
                 bot.sendMessage(chat_id, 'Registrazione effettuata correttamente!', reply_markup=keyboard)   
             else:
                 bot.sendMessage(chat_id, 'Sei nel menu principale', reply_markup=keyboard)   
 
-       elif msg['text'] == 'Crea filtro x Competenze':
+       elif msg['text'] == '🖍 Crea filtro x Competenze':
              comp_first, comp_second = filter.createCompetence()
              bot.sendMessage(chat_id,  comp_first)
              bot.sendMessage(chat_id,  comp_second)
-       elif msg['text'] == 'Crea filtro x Cliente': 
-            #  result = sql1.search_accise()
-            #  print(result)
+
+       elif msg['text'] == '🖍 Crea filtro x Cliente': 
              bot.sendMessage(chat_id, 'dua' )
 
        elif str(msg['text']).startswith("/_id_c_"):  
             bot.sendMessage(chat_id, insertCompetence.manageCompetence(chat_id,str(msg['text'])[7:]) )
 
-       elif msg['text'] == 'I mie filtri': 
-             bot.sendMessage(chat_id, filter.getMyFilters(chat_id) ) 
+       elif msg['text'] == '📌 I mie filtri': 
+             filtersList = filter.getMyFilters(chat_id)
+             if len(filtersList) <1:
+                bot.sendMessage(chat_id, "Non hai creato ancora un filtro!" )
+             else:
+                bot.sendMessage(chat_id, filtersList )
 
-       elif msg['text'] == 'Ticket oggi':
+       elif msg['text'] == '✖ Cancella filtro': 
+             filterToBeDeletedList = filter.showFilterToBeDelete(chat_id)
+             if len(filterToBeDeletedList)<1:
+                bot.sendMessage(chat_id,  "Non esistono filtri da cancellare")
+             else:
+                bot.sendMessage(chat_id,  ) 
+
+       elif str(msg['text']).startswith("/Competenza_id_cf_"): 
+             bot.sendMessage(chat_id, filter.deleteFilter(chat_id, str(msg['text'])[18:] ) ) 
+
+       elif msg['text'] == '🕘 Ticket oggi':
              listOfStrings =  ticketToday.getTicketToday(chat_id)
              for ticketItem in listOfStrings:
-                bot.sendMessage(chat_id, ticketItem)   
+                bot.sendMessage(chat_id, ticketItem)  
+             if len(listOfStrings) < 1:
+                bot.sendMessage(chat_id, "Non esistono ticket oggi")
     
        else:
              bot.sendMessage(chat_id, 'Commando non riconosciuto! Premere /start per iniziare.') 
