@@ -34,7 +34,7 @@ def getTicketLast20(teleId):
         docList = json.loads(fetchLast20Ticket.getLast20Ticket(str(j[3])))
         ticketAsString = ""
         for i in docList['data']:
-            ticketAsString += "Ticet: "+ i['ticket'] + "\n" +"Cliente: "+ i['cliente'] + "\n"  +"Oggetto: "+ i['oggetto']+ "\n"  +"Gravita': "+ i['gravita']+ "\n"  + "Competenza': "+ i['competenza']+ "\n" + "Apertura': "+ i['segnalazioni_apertura']  + "\n\n"     
+            ticketAsString += "🎫 Ticet: "+ i['ticket'] + "\n" +"🏢 Cliente: "+ i['cliente'] + "\n"  +"🔎 Oggetto: "+ i['oggetto']+ "\n"  +"🎨 Gravita': "+ i['gravita']+ "\n"  + "🧑 Competenza': "+ i['competenza']+ "\n" + "📅 Apertura': "+ i['segnalazioni_apertura']  + "\n\n"     
         if len(docList['data']):
             # max char 4096
            listOfStrings.append(str(ticketAsString))
@@ -50,7 +50,7 @@ def getTicketTodayForNotification(teleId):
         docList = json.loads(fetchTicketToday.fetchTicketToday(str(j[3])))
         ticketAsString = ""
         for i in docList['data']:
-            ticketAsString = "Ticet: "+ i['ticket'] + "\n" +"Cliente: "+ i['cliente'] + "\n"  +"Oggetto: "+ i['oggetto']+ "\n"  +"Gravita': "+ i['gravita']+ "\n"  + "Competenza': "+ i['competenza']+ "\n" + "Apertura': "+ i['segnalazioni_apertura']  + "\n\n"     
+            ticketAsString += "🎫 Ticet: "+ i['ticket'] + "\n" +"🏢 Cliente: "+ i['cliente'] + "\n"  +"🔎 Oggetto: "+ i['oggetto']+ "\n"  +"🎨 Gravita': "+ i['gravita']+ "\n"  + "🧑 Competenza': "+ i['competenza']+ "\n" + "📅 Apertura': "+ i['segnalazioni_apertura']  + "\n\n"     
             # if not exsisted before, I add it now
             listOfTicket = tickets.getTickets(int(j[0]),i['ticket'] )
             if len(listOfTicket) == 0:

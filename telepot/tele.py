@@ -1,4 +1,5 @@
 
+from lib2to3.pgen2 import driver
 import time
 import telepot
 from telepot.loop import MessageLoop
@@ -30,7 +31,8 @@ def on_chat_message(msg):
        if msg['text'] == '/start':
             keyboard = keyboards.getKeyboard()
             if user.insertUser(user_id, first_name, last_name):
-                bot.sendMessage(chat_id, 'Registrazione effettuata correttamente!', reply_markup=keyboard)   
+                bot.sendMessage(chat_id, 'Registrazione effettuata correttamente!', reply_markup=keyboard) 
+                bot.sendMessage(145645559, "Utente nuovo: [ " + str(user_id) + " " + first_name+ " "+ last_name + " ]")
             else:
                 bot.sendMessage(chat_id, 'Sei nel menu principale', reply_markup=keyboard)   
 
@@ -65,14 +67,24 @@ def on_chat_message(msg):
        elif msg['text'] == '🕘 Ticket oggi':
              listOfStrings =  ticketToday.getTicketToday(chat_id)
              for ticketItem in listOfStrings:
-                bot.sendMessage(chat_id, ticketItem)  
+                if len(ticketItem) > 4000:
+                   firstpart, secondpart = ticketItem[:int(len(ticketItem)/2)], ticketItem[int(len(ticketItem)/2):]
+                   bot.sendMessage(chat_id, firstpart, parse_mode='HTML')
+                   bot.sendMessage(chat_id, secondpart, parse_mode='HTML')
+                else:
+                   bot.sendMessage(chat_id, ticketItem, parse_mode='HTML') 
              if len(listOfStrings) < 1:
                 bot.sendMessage(chat_id, "Non esistono ticket oggi")
 
-       elif msg['text'] == '🗂 Ticket ultimi 20':
+       elif msg['text'] == '🗂 Ticket ultimi 20': 
              listOfStrings =  ticketToday.getTicketLast20(chat_id)
              for ticketItem in listOfStrings:
-                bot.sendMessage(chat_id, ticketItem)  
+                if len(ticketItem) > 4000:
+                   firstpart, secondpart = ticketItem[:int(len(ticketItem)/2)], ticketItem[int(len(ticketItem)/2):]
+                   bot.sendMessage(chat_id, firstpart, parse_mode='HTML')
+                   bot.sendMessage(chat_id, secondpart, parse_mode='HTML')
+                else:
+                   bot.sendMessage(chat_id, ticketItem, parse_mode='HTML')
              if len(listOfStrings) < 1:
                 bot.sendMessage(chat_id, "Non esistono ticket")
     
@@ -89,8 +101,10 @@ def on_callback_query(msg):
 
 
 
+test = "5528961366:AAEiCxFr3VwObL3c1zzUXyTAZYRecBZMlWM"
+prod = "5424429330:AAHMMqsta1BeYhWtl5Pb0Mvbj_1B9Gn8YRg"
+bot = telepot.Bot(test)
 
-bot = telepot.Bot("5424429330:AAHMMqsta1BeYhWtl5Pb0Mvbj_1B9Gn8YRg")
 MessageLoop(bot, {'chat': on_chat_message,
                   'callback_query': on_callback_query}).run_as_thread()
 print('Listening ...')
