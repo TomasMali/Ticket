@@ -1,7 +1,5 @@
 import requests
 
-import json
-
 def getLast20Ticket(comp):
 
     cookies = {
@@ -36,11 +34,12 @@ def getLast20Ticket(comp):
     response = requests.post('https://tsnew.sanmarcoweb.com/it/ticket/search/get-tickets', cookies=cookies, headers=headers, data=data)
     content = response.text
 
-    data = json.loads(content)
+    # data = json.loads(content)
 
-    with open('json/getLast20Ticket.json', 'w') as f:
-        f.write(content)    
+    # with open('json/getLast20Ticket.json', 'w') as f:
+    #     f.write(content)    
 
-    return data['data']
+    # return data['data']
+    return content
 
-print(getLast20Ticket(63))
+# print(getLast20Ticket(63))

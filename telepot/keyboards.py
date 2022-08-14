@@ -10,7 +10,8 @@ def getKeyboard():
                                 keyboard=[
                                     [KeyboardButton(text="🖍 Crea filtro x Competenze")
                                     # , KeyboardButton(text="Crea filtro x Cliente")
-                                    ,KeyboardButton(text="📌 I mie filtri"), KeyboardButton(text="✖Cancella filtro")]
+                                    ,KeyboardButton(text="📌 I mie filtri"),
+                                     KeyboardButton(text="✖ Cancella filtro")]
                                     ,
                                         [
                                  KeyboardButton(text="🕘 Ticket oggi")

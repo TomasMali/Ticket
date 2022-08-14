@@ -57,7 +57,7 @@ def on_chat_message(msg):
              if len(filterToBeDeletedList)<1:
                 bot.sendMessage(chat_id,  "Non esistono filtri da cancellare")
              else:
-                bot.sendMessage(chat_id,  ) 
+                bot.sendMessage(chat_id,  filterToBeDeletedList) 
 
        elif str(msg['text']).startswith("/Competenza_id_cf_"): 
              bot.sendMessage(chat_id, filter.deleteFilter(chat_id, str(msg['text'])[18:] ) ) 
@@ -68,6 +68,13 @@ def on_chat_message(msg):
                 bot.sendMessage(chat_id, ticketItem)  
              if len(listOfStrings) < 1:
                 bot.sendMessage(chat_id, "Non esistono ticket oggi")
+
+       elif msg['text'] == '🗂 Ticket ultimi 20':
+             listOfStrings =  ticketToday.getTicketLast20(chat_id)
+             for ticketItem in listOfStrings:
+                bot.sendMessage(chat_id, ticketItem)  
+             if len(listOfStrings) < 1:
+                bot.sendMessage(chat_id, "Non esistono ticket")
     
        else:
              bot.sendMessage(chat_id, 'Commando non riconosciuto! Premere /start per iniziare.') 
