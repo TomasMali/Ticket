@@ -3,6 +3,7 @@ import json
 sys.path.append('../api')
 import fetchTicketToday
 import fetchLast20Ticket
+import detailTicket
 sys.path.append('../conn')
 import filters
 import tickets
@@ -18,7 +19,7 @@ def getTicketToday(teleId):
         docList = json.loads(fetchTicketToday.fetchTicketToday(str(j[3])))
         ticketAsString = ""
         for i in docList['data']:
-            ticketAsString += "Ticet: "+ i['ticket'] + "\n" +"Cliente: "+ i['cliente'] + "\n"  +"Oggetto: "+ i['oggetto']+ "\n"  +"Gravita': "+ i['gravita']+ "\n"  + "Competenza': "+ i['competenza']+ "\n" + "Apertura': "+ i['segnalazioni_apertura']  + "\n\n"     
+            ticketAsString += "🎫 /Ticket_dettaglio_"+ i['ticket'] + "\n" +"🏢 Cliente: "+ i['cliente'] + "\n"  +"🔎 Oggetto: "+ i['oggetto']+ "\n"  +"🎨 Gravita': "+ i['gravita']+ "\n"  + "🧑 Competenza': "+ i['competenza']+ "\n" + "📅 Apertura': "+ i['segnalazioni_apertura']  + "\n\n"     
         if len(docList['data']):
             # max char 4096
            listOfStrings.append(str(ticketAsString))
@@ -34,7 +35,7 @@ def getTicketLast20(teleId):
         docList = json.loads(fetchLast20Ticket.getLast20Ticket(str(j[3])))
         ticketAsString = ""
         for i in docList['data']:
-            ticketAsString += "🎫 Ticet: "+ i['ticket'] + "\n" +"🏢 Cliente: "+ i['cliente'] + "\n"  +"🔎 Oggetto: "+ i['oggetto']+ "\n"  +"🎨 Gravita': "+ i['gravita']+ "\n"  + "🧑 Competenza': "+ i['competenza']+ "\n" + "📅 Apertura': "+ i['segnalazioni_apertura']  + "\n\n"     
+            ticketAsString += "🎫 /Ticket_dettaglio_"+ i['ticket'] + "\n" +"🏢 Cliente: "+ i['cliente'] + "\n"  +"🔎 Oggetto: "+ i['oggetto']+ "\n"  +"🎨 Gravita': "+ i['gravita']+ "\n"  + "🧑 Competenza': "+ i['competenza']+ "\n" + "📅 Apertura': "+ i['segnalazioni_apertura']  + "\n\n"     
         if len(docList['data']):
             # max char 4096
            listOfStrings.append(str(ticketAsString))
@@ -58,6 +59,13 @@ def getTicketTodayForNotification(teleId):
                listOfStrings.append(str(ticketAsString))
             
     return listOfStrings
+
+
+
+
+def getDetailTicket(ticketId):
+    downloaded = detailTicket.getDetail(str(ticketId))
+    return downloaded
     
 # print(getTicketTodayForNotification(145645559))
 

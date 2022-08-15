@@ -1,10 +1,11 @@
 
 from lib2to3.pgen2 import driver
+import os
 import time
 import telepot
 from telepot.loop import MessageLoop
+#from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 import keyboards
-from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 
 import filter
 import ticketToday
@@ -22,16 +23,20 @@ import user
 
 def on_chat_message(msg):
     first_name = msg['from']['first_name']
-    last_name = msg['from']['last_name']
+   #  last_name = msg['from']['last_name']
+    last_name = "noname"
+    if  "last_name" in msg['from']:
+        last_name = msg['from']['last_name']
     user_id = msg['from']['id']
     content_type, chat_type, chat_id = telepot.glance(msg)
-    print('Chat Message:', content_type, chat_type, chat_id)
+    print('Chat Message:', last_name, first_name, chat_id)
     print(content_type)
     if content_type == 'text':
        if msg['text'] == '/start':
             keyboard = keyboards.getKeyboard()
             if user.insertUser(user_id, first_name, last_name):
                 bot.sendMessage(chat_id, 'Registrazione effettuata correttamente!', reply_markup=keyboard) 
+                bot.sendDocument(chat_id=chat_id, document=open("gifs/welcome.gif", 'rb'))
                 bot.sendMessage(145645559, "Utente nuovo: [ " + str(user_id) + " " + first_name+ " "+ last_name + " ]")
             else:
                 bot.sendMessage(chat_id, 'Sei nel menu principale', reply_markup=keyboard)   
@@ -87,6 +92,21 @@ def on_chat_message(msg):
                    bot.sendMessage(chat_id, ticketItem, parse_mode='HTML')
              if len(listOfStrings) < 1:
                 bot.sendMessage(chat_id, "Non esistono ticket")
+
+      
+       elif str(msg['text']).startswith("/Ticket_dettaglio_"): 
+             ticketId = str(msg['text'])[18:] 
+             bot.sendMessage(chat_id, "Attendere per favore, sto caricando i dettagli per il ticket <b>" + ticketId +"</b> ....", parse_mode='HTML')
+             readyPdf = ticketToday.getDetailTicket(ticketId)
+             pdf_file = "json/" + str(ticketId) + "_details.pdf"
+             html_file = "json/" + str(ticketId) + "_details.html"
+             if readyPdf:
+                bot.sendDocument(chat_id=chat_id, document=open(pdf_file, 'rb'))
+                if os.path.exists(html_file):
+                   os.remove(html_file)
+                   os.remove(pdf_file)
+             else:
+                bot.sendMessage(chat_id, "Non è stato possibile scaricare i dettagli")
     
        else:
              bot.sendMessage(chat_id, 'Commando non riconosciuto! Premere /start per iniziare.') 
@@ -103,7 +123,7 @@ def on_callback_query(msg):
 
 test = "5528961366:AAEiCxFr3VwObL3c1zzUXyTAZYRecBZMlWM"
 prod = "5424429330:AAHMMqsta1BeYhWtl5Pb0Mvbj_1B9Gn8YRg"
-bot = telepot.Bot(test)
+bot = telepot.Bot(prod)
 
 MessageLoop(bot, {'chat': on_chat_message,
                   'callback_query': on_callback_query}).run_as_thread()
