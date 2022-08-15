@@ -98,13 +98,13 @@ def on_chat_message(msg):
              ticketId = str(msg['text'])[18:] 
              bot.sendMessage(chat_id, "Attendere per favore, sto caricando i dettagli per il ticket <b>" + ticketId +"</b> ....", parse_mode='HTML')
              readyPdf = ticketToday.getDetailTicket(ticketId)
-             pdf_file = "json/" + str(ticketId) + "_details.pdf"
+            #  pdf_file = "json/" + str(ticketId) + "_details.pdf"
              html_file = "json/" + str(ticketId) + "_details.html"
              if readyPdf:
-                bot.sendDocument(chat_id=chat_id, document=open(pdf_file, 'rb'))
+                bot.sendDocument(chat_id=chat_id, document=open(html_file, 'rb'), parse_mode='HTML')
                 if os.path.exists(html_file):
                    os.remove(html_file)
-                   os.remove(pdf_file)
+                  #  os.remove(pdf_file)
              else:
                 bot.sendMessage(chat_id, "Non è stato possibile scaricare i dettagli")
     

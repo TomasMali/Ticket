@@ -1,5 +1,4 @@
 import requests
-import pdfkit
 import os
 
 
@@ -16,7 +15,7 @@ def deleteDocs(ticketId):
     time.sleep(2)
     if os.path.exists("json/detailTicket.html"):
         os.remove("json/detailTicket.html")
-        os.remove('json/' + str(ticketId)+'_details.pdf')
+        # os.remove('json/' + str(ticketId)+'_details.pdf')
 
 
 def getDetail(ticketId):
@@ -53,7 +52,7 @@ def getDetail(ticketId):
 
         content = response.text
 
-        with open(html_file, 'w') as f:
+        with open(html_file, 'w', encoding='utf-8') as f:
             f.write(content.replace('rows="7"', ' rows="10" cols="100" ')) 
 
             #  json/" + str(ticketId) + "_details.pdf" 
@@ -64,7 +63,7 @@ def getDetail(ticketId):
 
         content2 = response2.text
 
-        with open(html_file, 'a') as b:
+        with open(html_file, 'a', encoding='utf-8') as b:
             b.write(content2.replace('rows="7"', ' rows="10" cols="100" '))  
 
     # Append notes
@@ -72,7 +71,7 @@ def getDetail(ticketId):
 
         content3 = response3.text     
 
-        with open(html_file, 'a') as c:
+        with open(html_file, 'a', encoding='utf-8') as c:
             c.write(content3.replace('rows="7"', ' rows="10" cols="100" '))    
 
     # Append the attachments
@@ -80,11 +79,13 @@ def getDetail(ticketId):
         response4 = requests.get('https://tsnew.sanmarcoweb.com/it/ticket/attachments/index/id/' + str(ticketId), cookies=cookies, headers=headers)
 
         content4 = response4.text
-        with open(html_file, 'a') as d:
+        with open(html_file, 'a', encoding='utf-8') as d:
             d.write(content4.replace('rows="7"', ' rows="10" cols="100" '))
 
     # Convert into pdf
-        pdfkit.from_file(html_file, pdf_file)  
+        # path_wkhtmltopdf = '/usr/bin/wkhtmltopdf'
+        # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+        # pdfkit.from_file(html_file, pdf_file, configuration=config)  
 
         return True
     
@@ -93,8 +94,7 @@ def getDetail(ticketId):
           return False
 
 
-
-#getDetail(456307)
+# getDetail(456427)
 
 # deleteDocs(456292)
 
