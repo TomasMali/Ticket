@@ -11,8 +11,7 @@ def closeConnection(connection,cursor):
     if connection:
         cursor.close()
         connection.close()
-        print("POstgres connection closed successfully")
-    print("Connection was closed before")
+
 
 
 # Insert a telegram user if not exsists
@@ -47,7 +46,6 @@ def getUsers():
     postgreSQL_select_Query = "select users.tid from users"
  
     cursor.execute(postgreSQL_select_Query)
-    print("Selecting rows from publisher table using cursor.fetchall")
     publisher_records = cursor.fetchall()
     closeConnection(connection,cursor)
     return publisher_records

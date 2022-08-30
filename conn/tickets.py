@@ -9,8 +9,8 @@ def closeConnection(connection,cursor):
     if connection:
         cursor.close()
         connection.close()
-        print("POstgres connection closed successfully")
-    print("Connection was closed before")
+    #     print("POstgres connection closed successfully")
+    # print("Connection was closed before")
 
 
 
@@ -46,7 +46,7 @@ def getTicketsByTid(tid):
     closeConnection(connection,cursor)
     return publisher_records
 
-# Returns all the ticket by telegram id and sort
+# Returns all the ticket by filtro id and sort
 def getTickets(fid, ticket):
     connection = getConn()
     cursor = connection.cursor()

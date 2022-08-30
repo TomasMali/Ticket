@@ -2,8 +2,6 @@ FROM python:3.9
 
 # WORKDIR /app
 
-RUN mkdir -p json
-
 COPY . .
 
 # RUN apt-get update -y
@@ -17,5 +15,7 @@ RUN pip install psycopg2
 RUN pip install telepot
 
 RUN pip install requests
+
+
 
 CMD [ "python", "./telepot/tele.py" ]

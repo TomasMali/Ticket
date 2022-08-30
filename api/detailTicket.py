@@ -19,7 +19,7 @@ def deleteDocs(ticketId):
 
 
 def getDetail(ticketId):
-    print("arrivato con :   " + str(ticketId))
+    # print("arrivato con :   " + str(ticketId))
 
     pdf_file = "json/" + str(ticketId) + "_details.pdf"
     html_file = "json/" + str(ticketId) + "_details.html"

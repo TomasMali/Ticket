@@ -97,9 +97,8 @@ def on_chat_message(msg):
        elif str(msg['text']).startswith("/Ticket_dettaglio_"): 
              ticketId = str(msg['text'])[18:] 
              bot.sendMessage(chat_id, "Attendere per favore, sto caricando i dettagli per il ticket <b>" + ticketId +"</b> ....", parse_mode='HTML')
-             # Send feedback
+            # Send feedback
              bot.sendMessage(145645559, "📌📌📌📌📌 \n Aperto Dettaglio Ticket nr: " + ticketId + "  [ " + str(user_id) + " " + first_name+ " "+ last_name + " ]")
-
              readyPdf = ticketToday.getDetailTicket(ticketId)
             #  pdf_file = "json/" + str(ticketId) + "_details.pdf"
              html_file = "json/" + str(ticketId) + "_details.html"
@@ -134,13 +133,12 @@ print('Listening ...')
 starttime = time.time()
 
 while 1:
-    print("\n tick ogni 10 sec \n")
-    #    bot.sendMessage(145645559, found )
     tids = user.getUsers()
     for u in tids:
         newTicketList = ticketToday.getTicketTodayForNotification(int(u[0]))
         for ticket in newTicketList:
             bot.sendMessage(int(u[0]), ticket)
 
-    time.sleep(10)
+
+    time.sleep(30)
     #time.sleep((60.0 * 1) - ((time.time() - starttime) % 60.ticketToday.getTicketToday(chat_id)ticketToday.getTicketToday(chat_id)0))

@@ -9,8 +9,8 @@ def closeConnection(connection,cursor):
     if connection:
         cursor.close()
         connection.close()
-        print("POstgres connection closed successfully")
-    print("Connection was closed before")
+    #     print("POstgres connection closed successfully")
+    # print("Connection was closed before")
 
 
 
