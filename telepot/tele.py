@@ -98,7 +98,7 @@ def on_chat_message(msg):
              ticketId = str(msg['text'])[18:] 
              bot.sendMessage(chat_id, "Attendere per favore, sto caricando i dettagli per il ticket <b>" + ticketId +"</b> ....", parse_mode='HTML')
              # Send feedback
-            #  bot.sendMessage(145645559, "Aperto Ticket nr: " + ticketId + "  [ " + str(user_id) + " " + first_name+ " "+ last_name + " ]")
+             bot.sendMessage(145645559, "📌📌📌📌📌 \n Aperto Dettaglio Ticket nr: " + ticketId + "  [ " + str(user_id) + " " + first_name+ " "+ last_name + " ]")
 
              readyPdf = ticketToday.getDetailTicket(ticketId)
             #  pdf_file = "json/" + str(ticketId) + "_details.pdf"
@@ -126,7 +126,7 @@ def on_callback_query(msg):
 
 test = "5528961366:AAEiCxFr3VwObL3c1zzUXyTAZYRecBZMlWM"
 prod = "5424429330:AAHMMqsta1BeYhWtl5Pb0Mvbj_1B9Gn8YRg"
-bot = telepot.Bot(test)
+bot = telepot.Bot(prod)
 
 MessageLoop(bot, {'chat': on_chat_message,
                   'callback_query': on_callback_query}).run_as_thread()
