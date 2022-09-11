@@ -52,8 +52,8 @@ def getDetail(ticketId):
 
         content = response.text
 
-        with open(html_file, 'w', encoding='utf-8') as f:
-            f.write(content.replace('rows="7"', ' rows="10" cols="100" ')) 
+        with open(html_file, 'w') as f:
+            f.write(str(content.replace('rows="7"', ' rows="10" cols="100" ')).encode('latin1').decode('utf8'))  
 
             #  json/" + str(ticketId) + "_details.pdf" 
 
@@ -64,7 +64,7 @@ def getDetail(ticketId):
         content2 = response2.text
 
         with open(html_file, 'a', encoding='utf-8') as b:
-            b.write(content2.replace('rows="7"', ' rows="10" cols="100" '))  
+            b.write(content2.replace('rows="7"', ' rows="10" cols="100" ').encode('latin1').decode('utf8'))  
 
     # Append notes
         response3 = requests.get('https://tsnew.sanmarcoweb.com/it/ticket/notes/index/id/' + str(ticketId), cookies=cookies, headers=headers)
@@ -72,7 +72,7 @@ def getDetail(ticketId):
         content3 = response3.text     
 
         with open(html_file, 'a', encoding='utf-8') as c:
-            c.write(content3.replace('rows="7"', ' rows="10" cols="100" '))    
+            c.write(content3.replace('rows="7"', ' rows="10" cols="100" ').encode('latin1').decode('utf8'))    
 
     # Append the attachments
 
@@ -80,7 +80,7 @@ def getDetail(ticketId):
 
         content4 = response4.text
         with open(html_file, 'a', encoding='utf-8') as d:
-            d.write(content4.replace('rows="7"', ' rows="10" cols="100" '))
+            d.write(content4.replace('rows="7"', ' rows="10" cols="100" ').encode('latin1').decode('utf8'))
 
     # Convert into pdf
         # path_wkhtmltopdf = '/usr/bin/wkhtmltopdf'
