@@ -4,7 +4,7 @@ import os
 
 import traceback
 import logging
-
+import cockie
 import time
 
 
@@ -27,7 +27,7 @@ def getDetail(ticketId):
 
         cookies = {
             'language': 'it',
-            'sid': 'rgoumkdu3ndteo372j5vijpjm6',
+            'sid': cockie.id,
         }
 
         headers = {

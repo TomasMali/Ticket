@@ -1,12 +1,12 @@
 import requests
-
+import cockie
 
 
 
 def fetchTicketToday(comp):
     cookies = {
         'language': 'it',
-        'sid': 'rgoumkdu3ndteo372j5vijpjm6',
+        'sid': cockie.id,
     }
 
     headers = {
@@ -39,4 +39,4 @@ def fetchTicketToday(comp):
     # print(content)
     return content
 
-# fetchTicketToday(1)
+#fetchTicketToday(1)

@@ -1,10 +1,11 @@
 import requests
+import cockie
 
 def getLast20Ticket(comp):
 
     cookies = {
         'language': 'it',
-        'sid': 'rgoumkdu3ndteo372j5vijpjm6',
+        'sid': cockie.id,
     }
 
     headers = {

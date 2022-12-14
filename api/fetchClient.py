@@ -1,13 +1,13 @@
 
 import requests
-
+import cockie
 
 
 def getCleint():
 
     cookies = {
         'language': 'it',
-        'sid': 'ajlquaj1g3el263gi52empm763',
+        'sid': cockie.id,
     }
 
     headers = {
@@ -42,6 +42,6 @@ def getCleint():
 
 
 
-# print(getCleint())
+#print(getCleint())
 
  
