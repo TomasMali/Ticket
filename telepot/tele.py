@@ -22,6 +22,7 @@ import user
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 def on_chat_message(msg):
+   try:
     first_name = msg['from']['first_name']
    #  last_name = msg['from']['last_name']
     last_name = "noname"
@@ -112,33 +113,42 @@ def on_chat_message(msg):
     
        else:
              bot.sendMessage(chat_id, 'Commando non riconosciuto! Premere /start per iniziare.') 
+   except:
+      print("Error in on_chat_message")
 
 def on_callback_query(msg):
+   try:
     query_id, from_id, query_data = telepot.glance(msg, flavor='callback_query')
    # print('Callback Query:', query_id, from_id, query_data)
     bot.answerCallbackQuery(query_id, text='Got it')
    #  file="das/" + query_data
    # bot.sendDocument(chat_id=from_id, document=open(file, 'rb')) 
     print(query_data)
+   except:
+      print("Error in on_callback_query")
 
 
 
 test = "5528961366:AAEiCxFr3VwObL3c1zzUXyTAZYRecBZMlWM"
-prod = "5424429330:AAHMMqsta1BeYhWtl5Pb0Mvbj_1B9Gn8YRg"
+prod = "5818240231:AAEKPJsGqLOgXCyDf63ya-sJctNIk6hzUXg"
 bot = telepot.Bot(prod)
 
-MessageLoop(bot, {'chat': on_chat_message,
-                  'callback_query': on_callback_query}).run_as_thread()
-print('Listening ...')
-starttime = time.time()
 
-while 1:
-    tids = user.getUsers()
-    for u in tids:
-        newTicketList = ticketToday.getTicketTodayForNotification(int(u[0]))
-        for ticket in newTicketList:
-            bot.sendMessage(int(u[0]), ticket)
+try:
+   MessageLoop(bot, {'chat': on_chat_message,
+                     'callback_query': on_callback_query}).run_as_thread()
+   print('Listening ...')
+   starttime = time.time()
+
+   while 1:
+      tids = user.getUsers()
+      for u in tids:
+         newTicketList = ticketToday.getTicketTodayForNotification(int(u[0]))
+         for ticket in newTicketList:
+               bot.sendMessage(int(u[0]), ticket)
 
 
-    time.sleep(30)
-    #time.sleep((60.0 * 1) - ((time.time() - starttime) % 60.ticketToday.getTicketToday(chat_id)ticketToday.getTicketToday(chat_id)0))
+      time.sleep(30)
+      #time.sleep((60.0 * 1) - ((time.time() - starttime) % 60.ticketToday.getTicketToday(chat_id)ticketToday.getTicketToday(chat_id)0))
+except:
+   print("Error in MessageLoop main with while 1")
