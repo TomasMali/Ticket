@@ -133,6 +133,7 @@ test = "5528961366:AAEiCxFr3VwObL3c1zzUXyTAZYRecBZMlWM"
 prod = "5818240231:AAEKPJsGqLOgXCyDf63ya-sJctNIk6hzUXg"
 bot = telepot.Bot(prod)
 
+import traceback
 
 try:
    MessageLoop(bot, {'chat': on_chat_message,
@@ -143,12 +144,13 @@ try:
    while 1:
       tids = user.getUsers()
       for u in tids:
-         newTicketList = ticketToday.getTicketTodayForNotification(int(u[0]))
-         for ticket in newTicketList:
-               bot.sendMessage(int(u[0]), ticket)
+         if u is not None and u[0] is not None:
+            newTicketList = ticketToday.getTicketTodayForNotification(int(u[0]))
+            for ticket in newTicketList:
+                  bot.sendMessage(int(u[0]), ticket)
 
 
       time.sleep(30)
       #time.sleep((60.0 * 1) - ((time.time() - starttime) % 60.ticketToday.getTicketToday(chat_id)ticketToday.getTicketToday(chat_id)0))
-except:
-   print("Error in MessageLoop main with while 1")
+except Exception:
+    traceback.print_exc()
