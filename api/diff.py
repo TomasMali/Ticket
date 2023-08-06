@@ -8,6 +8,8 @@ def get_similarity_ratio(s1, s2):
 w_target = "JExp non funziona per un problema delle dogane:Esiste una procedura di emergenza per inviare i DAA?"
 
 w_list = compareText.getObjectAndDescription('Assistenza Vinicoli','JExp')
+w2_list = [item[0] for item in w_list]
+w_list = w2_list
 # Calculate similarity scores for each w in w_list
 similarity_scores = [(w, get_similarity_ratio(w_target, w)) for w in w_list]
 

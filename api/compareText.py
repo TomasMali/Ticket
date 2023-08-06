@@ -6,6 +6,7 @@ import traceback
 import logging
 import cockie
 import connection
+import spacy_match
 
 def getConn():
     c = connection.conn()
@@ -104,8 +105,8 @@ def getDetail(ticketId):
         # print("Prodotto: ", prodotto)
 
 
-        getObjectAndDescription('Assistenza Vinicoli')
-
+        # getObjectAndDescription('Assistenza Vinicoli','JExp')
+        spacy_match.s_match(oggetto+description)
 
 
         if not soluzione.replace("\n", ""):
@@ -141,15 +142,14 @@ def get_ids_from_json_file(file_path):
     ids = [item['id'] for item in data['data']]
     return ids
 
-file_path = 'data.json'
-ids_list = get_ids_from_json_file("/Users/tommal/Desktop/tickets.json")
+# file_path = 'data.json'
+# ids_list = get_ids_from_json_file("/Users/tommal/Desktop/tickets.json")
 # print(ids_list)
 
 
 # for ticket in ids_list:
 #     getDetail(ticket)
-
-# getDetail("456429")
+getDetail("456429")
 
 
 
