@@ -1,0 +1,844 @@
+
+			
+			<form class="std inline fixedInputsWidth ticketDetails" method="post" action="/it/ticket/details/update" data-dojo-type="dijit.form.Form">
+	<script type="dojo/connect" data-dojo-event="onSubmit" data-dojo-args="event">ticketData.sendForm(this,event)</script>
+	<input type="hidden" name="id" value="456429" />
+	<input type="hidden" name="formToken" value="601db58704f7477799a232b4090ca8c3" />
+	<fieldset class="center">
+			<legend>Informazioni</legend>
+		<div class="centered">
+			<p>
+						<label for="padre_456429">
+								Ticket padre:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/parent.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="padre_456429" name="padre" data-dojo-props="readOnly: true,required: false,onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-parents',3);}">
+											</select>
+								<a id="padre_456429_infobox" class="infoBoxIcon" tabindex="99999" href="#" onclick="ticketDependencies.showParent('padre_456429','','456429','Dettagli ticket padre')">
+				<img alt="Dettagli ticket padre" title="Dettagli ticket padre" width="16" height="16" src="/img/_core/infobox/ticket_details.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="ticket_456429">
+								Ticket:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/ticket.png" />
+			</label>
+			<input data-dojo-type="dijit.form.NumberTextBox" id="ticket_456429" name="ticket" value="456429" data-dojo-props="constraints:{pattern:'#'},readOnly: true,required: false,constraints:{pattern:'#'}" />			<a id="ticket_456429_infobox" class="infoBoxIcon" tabindex="99999" href="#" onclick="ticketDetails.showInfoBox('ticket_456429','/ticket/details/ticket-infobox','456429','Responsabili ticket')">
+				<img alt="Responsabili ticket" title="Responsabili ticket" width="16" height="16" src="/img/_core/infobox/info_blue.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="apertura_456429">
+								Data di apertura:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/date.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="apertura_456429" name="apertura" value="10/08/2022 09:10:25" data-dojo-props="readOnly: true,required: false" />			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="stato_456429">
+								Stato:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/status.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="stato_456429" name="stato" data-dojo-props="readOnly: true,required: false,onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-statuses',0);}">
+												<option value="6" selected="selected">CHIUSO</option>
+											</select>
+								<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="cliente_456429">
+								Cliente:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/client.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="cliente_456429" name="cliente" data-dojo-props="readOnly: true,required: false,onChange:function(value){ticketDetails.updateInfoboxIcon(this.id,'/ticket/client/icon'); ticketDetails.setChildFilter('commessa_456429',this);},onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-clients',2);}">
+												<option value="1701040750" selected="selected">ARIANNA BAGS S.R.L.</option>
+											</select>
+								<a id="cliente_456429_infobox" class="infoBoxIcon" tabindex="99999" href="#" onclick="ticketDetails.showInfoBox('cliente_456429','/ticket/client/index','456429','Dettagli cliente')">
+				<img alt="Dettagli cliente" title="Dettagli cliente" width="16" height="16" src="/img/_core/infobox/info_blue.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="prodotto_456429">
+								Prodotto / Servizio:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/protocols.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="prodotto_456429" name="prodotto" data-dojo-props="readOnly: true,required: false,onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-products',0);}">
+												<option value="11" selected="selected">Fiscality</option>
+											</select>
+								<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="attivita_456429">
+								Attivita:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/object.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="attivita_456429" name="attivita" data-dojo-props="readOnly: true,required: false,onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-attivita',0);}">
+												<option value="1" selected="selected">Assistenza / Segnalazione Anomalia</option>
+											</select>
+								<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="oggetto_456429">
+								Oggetto:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/object.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="oggetto_456429" name="oggetto" value="ESTRAZIONE FATTURE CEE" data-dojo-props="readOnly: true,required: false" />			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="problema_456429">
+								Problema:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/problem.png" />
+			</label>
+			<textarea data-dojo-type="dijit.form.SimpleTextarea"  rows="10" cols="100"  id="problema_456429" name="problema" data-dojo-props="readOnly: true,required: false">Buongiorno,
+ho contabilizzato delle fatture CEE (Registro 8) emesse in questi giorni, sono entrata in Fiscality, ho fatto ESTRAI E INVIA ma queste fatture non me la carica. Vorrei capire dove sto sbagliando.
+Grazie</textarea>			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="contatto_456429">
+								Persona da contattare:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/tickets/technicians.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="contatto_456429" name="contatto" value="Rossella Bellan" data-dojo-props="readOnly: true,required: false" />			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="emailcontatto_456429">
+								Email contatto:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/messages/mail_send.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="emailcontatto_456429" name="emailcontatto" value="bellan@pelletterieabl.it" data-dojo-props="readOnly: true,required: false" />			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="inviaacontatto_456429">
+								Invia notifiche al contatto:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/messages/mail_send.png" />
+			</label>
+								<input type="hidden" value="0" name="inviaacontatto" />
+					<input data-dojo-type="dijit.form.CheckBox" id="inviaacontatto_456429" name="inviaacontatto" value="1" checked="checked" data-dojo-props="readOnly: true,required: false" />
+				    			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="telefono_456429">
+								Telefono:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/contact.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="telefono_456429" name="telefono" value="041 487666" data-dojo-props="readOnly: true,required: false" />			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="autore_456429">
+								Autore:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/author.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="autore_456429" name="autore" data-dojo-props="readOnly: true,required: false,onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-signalators',3);}">
+												<option value="2164" selected="selected">ARIANNA BAGS S.R.L.</option>
+											</select>
+								<a id="autore_456429_infobox" class="infoBoxIcon" tabindex="99999" href="#" onclick="ticketDetails.showInfoBox('autore_456429','/ticket/user/details-by-id','456429','Dettagli autore')">
+				<img alt="Dettagli autore" title="Dettagli autore" width="16" height="16" src="/img/_core/infobox/info_blue.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="segnalatore_456429">
+								Segnalatore:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/signalator.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="segnalatore_456429" name="segnalatore" data-dojo-props="readOnly: true,required: false,onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-signalators',3);}">
+												<option value="2164" selected="selected">ARIANNA BAGS S.R.L.</option>
+											</select>
+								<a id="segnalatore_456429_infobox" class="infoBoxIcon" tabindex="99999" href="#" onclick="ticketDetails.showInfoBox('segnalatore_456429','/ticket/user/details-by-id','456429','Dettagli segnalatore')">
+				<img alt="Dettagli segnalatore" title="Dettagli segnalatore" width="16" height="16" src="/img/_core/infobox/info_blue.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="gravita_456429">
+								Gravità:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/severity.png" />
+			</label>
+								<select class="gravitaaltabloccante" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="gravita_456429" name="gravita" data-dojo-props="readOnly: true,required: false,onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-severities',0);}">
+												<option value="4" selected="selected">ROSSO</option>
+											</select>
+								<a id="gravita_456429_infobox" class="infoBoxIcon" tabindex="99999" href="#" onclick="ticketDetails.showInfoBox('gravita_456429','/ticket/details/gravita-infobox','456429','Info Gravità')">
+				<img alt="Info Gravità" title="Info Gravità" width="16" height="16" src="/img/_core/infobox/info_blue.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="competenza_456429">
+								Competenza:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/competence.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="competenza_456429" name="competenza" data-dojo-props="readOnly: true,required: false,onChange:function(value){ticketDetails.setAlsoRequired('area_456429',this,['-2','3','5','6']); ticketDetails.setAlsoRequired('sottoarea_456429',this,['-2']); ticketDetails.setAlsoRequired('versione_456429',this,['-2','3','5','6']); ticketDetails.setAlsoRequired('patch_456429',this,['-2','3','5','6']);},onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-competencies',0);}">
+												<option value="2" selected="selected">Assistenza</option>
+											</select>
+								<a id="competenza_456429_infobox" class="infoBoxIcon" tabindex="99999" href="#" onclick="ticketDetails.showInfoBox('competenza_456429','/ticket/details/competence-infobox','456429','Responsabile competenza')">
+				<img alt="Responsabile competenza" title="Responsabile competenza" width="16" height="16" src="/img/_core/infobox/info_blue.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+		</div>
+	</fieldset>
+	<fieldset class="center">
+			<legend>Dati aggiuntivi</legend>
+		<div class="centered">
+			<p>
+						<label for="area_456429">
+								Area:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/area.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="area_456429" name="area" data-dojo-props="readOnly: true,required: false,onChange:function(value){ticketDetails.setChildFilter('sottoarea_456429',this);},onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-areas',0);}">
+											</select>
+								<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="sottoarea_456429">
+								Sottoarea:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/subarea.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="sottoarea_456429" name="sottoarea" data-dojo-props="readOnly: true,required: false,onChange:function(value){ticketDetails.setParentValue('area_456429',this);},onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-subareas',0); ticketDetails.setSelfFilter('area_456429',this);}">
+											</select>
+								<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="versione_456429">
+								Versione Galileo:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/version.gif" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="versione_456429" name="versione" data-dojo-props="readOnly: true,required: false,onChange:function(value){ticketDetails.setChildFilter('patch_456429',this);},onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-versions',0);}">
+											</select>
+								<a id="versione_456429_infobox" class="infoBoxIcon" tabindex="99999" href="#" onclick="ticketDetails.showInfoBox('versione_456429','/ticket/details/version-infobox','456429','Info Versioni')">
+				<img alt="Info Versioni" title="Info Versioni" width="16" height="16" src="/img/_core/infobox/info_blue.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="patch_456429">
+								Patch Galileo:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/patch.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="patch_456429" name="patch" data-dojo-props="readOnly: true,required: false,onChange:function(value){ticketDetails.setParentValue('versione_456429',this);},onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-patches',0); ticketDetails.setSelfFilter('versione_456429',this);}">
+											</select>
+								<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="programma_456429">
+								Programma:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/window.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="programma_456429" name="programma" value="" data-dojo-props="readOnly: true,required: false" />			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="tipo_programma_456429">
+								Tipo programma:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/coding.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="tipo_programma_456429" name="tipo_programma" value="" data-dojo-props="readOnly: true,required: false" />			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="ambientedati_456429">
+								Ambiente dati / Azienda:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/home.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="ambientedati_456429" name="ambientedati" value="" data-dojo-props="readOnly: true,required: false" />			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="commessa_456429">
+								Commessa:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/commessa.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="commessa_456429" name="commessa" data-dojo-props="readOnly: true,required: false,onChange:function(value){ticketDetails.setParentValue('cliente_456429',this); ticketDetails.setChildFilter('sottocommessa_456429',this);},onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-contracts',0); ticketDetails.setSelfFilter('cliente_456429',this);}">
+											</select>
+								<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="sottocommessa_456429">
+								Sottocommessa:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/sottocommessa.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="sottocommessa_456429" name="sottocommessa" data-dojo-props="readOnly: true,required: false,onChange:function(value){ticketDetails.setParentValue('commessa_456429',this);},onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-subcontracts',0); ticketDetails.setSelfFilter('commessa_456429',this);}">
+											</select>
+								<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="sistema_operativo_456429">
+								Sistema operativo:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/os.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="sistema_operativo_456429" name="sistema_operativo" data-dojo-props="readOnly: true,required: false,onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-oses',0);}">
+											</select>
+								<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="priorita_456429">
+								Priorità:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/podium.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="priorita_456429" name="priorita" data-dojo-props="readOnly: true,required: false,onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-priorities',0);}">
+											</select>
+								<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="richiesta_installazione_456429">
+								Richiesta installazione:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/installer.png" />
+			</label>
+								<input type="hidden" value="0" name="richiesta_installazione" />
+					<input data-dojo-type="dijit.form.CheckBox" id="richiesta_installazione_456429" name="richiesta_installazione" value="1"  data-dojo-props="readOnly: true,required: false" />
+				    			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="da_fatturare_456429">
+								Da fatturare:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/invoice.png" />
+			</label>
+								<input type="hidden" value="0" name="da_fatturare" />
+					<input data-dojo-type="dijit.form.CheckBox" id="da_fatturare_456429" name="da_fatturare" value="1"  data-dojo-props="readOnly: true,required: false" />
+				    			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="pooldata_456429">
+								Cliente del Pool:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/tickets/technicians.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="pooldata_456429" name="pooldata" value="" data-dojo-props="readOnly: true,required: false" />			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+		</div>
+	</fieldset>
+	<fieldset class="center">
+			<legend>Tempistiche</legend>
+		<div class="centered">
+			<p>
+						<label for="inizio_456429">
+								Data prevista di inizio:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/date.png" />
+			</label>
+			<input type="text" data-dojo-type="dijit.form.DateTextBox" id="inizio_456429" name="inizio" value="2022-08-10" data-dojo-props="constraints:{datePattern:'dd/MM/yyyy',selector:'date'},readOnly: true,required: false,constraints:{datePattern:'dd/MM/yyyy',selector:'date'},onChange:function(value){ticketDetails.setChildMinDate('fine_456429',this);},onFocus:function(){ticketDetails.setSelfMaxDate('fine_456429',this);}" />			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="fine_456429">
+								Data prevista di fine:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/date.png" />
+			</label>
+			<input type="text" data-dojo-type="dijit.form.DateTextBox" id="fine_456429" name="fine" value="2022-08-10" data-dojo-props="constraints:{datePattern:'dd/MM/yyyy',selector:'date'},readOnly: true,required: false,constraints:{datePattern:'dd/MM/yyyy',selector:'date'},onChange:function(value){ticketDetails.setParentMaxDate('inizio_456429',this);},onFocus:function(){ticketDetails.setSelfMinDate('inizio_456429',this);}" />			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="tempo_previsto_456429">
+								Tempo previsto (h):
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/stopwatch.png" />
+			</label>
+			<input data-dojo-type="dijit.form.NumberTextBox" id="tempo_previsto_456429" name="tempo_previsto" value="" data-dojo-props="readOnly: true,required: false" />			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+		</div>
+	</fieldset>
+	<fieldset class="center">
+			<legend>CSV</legend>
+		<div class="centered">
+			<p>
+						<label for="protocolli_456429">
+								Protocolli:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/work-items.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="protocolli_456429" name="protocolli" value="" data-dojo-props="readOnly: true,required: false" />			<a id="protocolli_456429_infobox" class="infoBoxIcon" tabindex="99999" href="#" onclick="ticketDetails.showInfoBox('protocolli_456429','/ticket/protocols/index','456429','Dettagi protocolli')">
+				<img alt="Dettagi protocolli" title="Dettagi protocolli" width="16" height="16" src="/img/_core/infobox/edit.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="workitems_456429">
+								Work items v3:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/work-items.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="workitems_456429" name="workitems" value="" data-dojo-props="readOnly: true,required: false" />			<a id="workitems_456429_infobox" class="infoBoxIcon" tabindex="99999" href="#" onclick="ticketDetails.showInfoBox('workitems_456429','/ticket/work-items/index','456429','Dettagli work items v3')">
+				<img alt="Dettagli work items v3" title="Dettagli work items v3" width="16" height="16" src="/img/_core/infobox/edit.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="workitemsfive_456429">
+								Work items v5:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/work-items.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="workitemsfive_456429" name="workitemsfive" value="" data-dojo-props="readOnly: true,required: false" />			<a id="workitemsfive_456429_infobox" class="infoBoxIcon" tabindex="99999" href="#" onclick="ticketDetails.showInfoBox('workitemsfive_456429','/ticket/work-items-five/index','456429','Dettagli work items v5')">
+				<img alt="Dettagli work items v5" title="Dettagli work items v5" width="16" height="16" src="/img/_core/infobox/edit.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+		</div>
+	</fieldset>
+	<fieldset class="center">
+			<legend>Tecnici</legend>
+		<div class="centered">
+			<p>
+						<label for="tecnici_456429">
+								Tecnici:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/add_technician.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="tecnici_456429" name="tecnici" data-dojo-props="readOnly: true,required: false,onChange:function(value){ticketTechnicians.addInput(this,'/img/_core/ticket/add_technician.png');},onFocus:function(){ticketDetails.bindStore(this,'',3);}">
+											</select>
+								<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+		</div>
+	</fieldset>
+	<fieldset class="center">
+			<legend>Risoluzione</legend>
+		<div class="centered">
+			<p>
+						<label for="azione_456429">
+								Azione:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/status.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="azione_456429" name="azione" data-dojo-props="readOnly: true,required: false,onChange:function(value){ticketDetails.setAlsoRequired('classificazione_456429',this,['6','5']); ticketDetails.setAlsoRequired('soluzione_456429',this,['6','5','7']);},onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-actions',0);}">
+												<option value="6" selected="selected">CHIUSO</option>
+											</select>
+								<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="classificazione_456429">
+								Classificazione:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/classification.png" />
+			</label>
+								<select class="" onchange="ticketDetails.setBackground()" data-dojo-type="dijit.form.FilteringSelect" id="classificazione_456429" name="classificazione" data-dojo-props="required: false,onFocus:function(){ticketDetails.bindStore(this,'/ticket/details/get-classifications',0);}">
+												<option value="34" selected="selected">Consulenza applicativa</option>
+											</select>
+								<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="soluzione_456429">
+								Descrizione:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/description.png" />
+			</label>
+			<textarea data-dojo-type="dijit.form.SimpleTextarea"  rows="10" cols="100"  id="soluzione_456429" name="soluzione" data-dojo-props="readOnly: true,required: false,onChange:function(value){ticketDetails.setAlsoRequired('azione_456429',this,[]);}">Collegata da cliente:
+Le fatture erano visibili ma essendo passate su storico bastava modificare i filtri di Fiscality avendo visualizzazione dei dati storici anziché attuali.
+Tutto ok, spedite fatture</textarea>			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="chiusura_456429">
+								Data:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/date.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="chiusura_456429" name="chiusura" value="10/08/2022 11:00:13" data-dojo-props="readOnly: true,required: false" />			<a class="infoBoxIcon" tabindex="99999">
+				<img alt="placeholder" width="16" height="16" src="/img/_core/infobox/placeholder.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+			<p>
+						<label for="operatore_456429">
+								Operatore:
+				<img class="rightIcon" width="16" height="16" src="/img/_core/ticket/operator.png" />
+			</label>
+			<input data-dojo-type="dijit.form.ValidationTextBox" id="operatore_456429" name="operatore" value="Milani Martina" data-dojo-props="readOnly: true,required: false" />			<a id="operatore_456429_infobox" class="infoBoxIcon" tabindex="99999" href="#" onclick="ticketDetails.showInfoBox('operatore_456429','/ticket/user/details-by-ticket-operator','456429','Dettagli operatore')">
+				<img alt="Dettagli operatore" title="Dettagli operatore" width="16" height="16" src="/img/_core/infobox/info_blue.png" />
+			</a>
+						
+			<!-- INIZIO data scad. assistenza -->
+			
+			
+			<!-- FINE data scad. assistenza -->
+		</p>
+		</div>
+	</fieldset>
+    <p class="center">
+        	<button type="submit" data-dojo-type="dijit.form.Button">Salva</button>
+                </p>
+</form>
+
+<div class="timestamp" title="1660122013"></div>
+<span><!-- Needed to disable .dijitContentPaneSingleChild --></span>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<form class="std newline fixedInputsWidth" id="messageAddForm456429" method="post" action="/it/ticket/messages/send" data-dojo-type="dijit.form.Form" >
+	<script type="dojo/connect" data-dojo-event="onSubmit" data-dojo-args="event">ticketData.sendForm(this,event)</script>
+	<input type="hidden" name="id" value="456429"/>
+	<input type="hidden" name="message" id="messageText456429" />
+	<input type="hidden" name="formToken" value="ac15bfaff3ae7019e8e700992314d239" />
+	<fieldset class="objContainer messageContainer">
+		<legend>Nuovo messaggio</legend>
+		<div class="mainData">
+			<div id="messageTo456429">
+				<p>
+					<select class="messageToType" data-dojo-type="dijit.form.FilteringSelect" name="toType[]" data-dojo-props="required:true,readOnly:true">
+						<option value="to" selected="selected">A:</option>
+					</select><!-- 
+					--><select class="messageToAddress" data-dojo-type="dijit.form.ComboBox" name="toAddress[]" data-dojo-props="required:true,validator:ticketMessages.validator,onFocus:function(){ticketMessages.bindStore(this,'/ticket/messages/get-recipients/id/456429',3);},onChange:ticketMessages.toAddressChanged"></select>
+				</p>
+				<p>
+					<select class="messageToType" data-dojo-type="dijit.form.FilteringSelect" name="toType[]" data-dojo-props="required:false,value:null,onChange:function(value){ticketMessages.toChanged('messageTo456429',this,value,456429);}">
+						<option value="to">A:</option>
+						<option value="cc">Cc:</option>
+					</select><!--  
+				--></p>
+			</div>
+			<p>
+				<label for="messageObject456429">Oggetto:</label>
+				<input type="text" id="messageObject456429" name="object" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required:true" />
+			</p>
+			<p>
+				<label>Messaggio:</label>
+				<span data-dojo-type="dijit.Editor" data-dojo-props="name:'editor',height:'120px',plugins:['undo','redo','|','bold','italic','underline','strikethrough','|','subscript','superscript','|','insertOrderedList','insertUnorderedList','|','indent','outdent','|','removeFormat']">
+					<script type="dojo/connect" data-dojo-event="onChange" data-dojo-args="value">dojo.attr(dojo.byId("messageText456429"),"value",value);</script>
+				</span>
+			</p>
+			<p>
+				<input id="sendCopyToMe456429" data-dojo-type="dijit.form.CheckBox" name="sendCopyToMe" />
+				<label style="display:inline" for="sendCopyToMe456429">Inviami una copia del messaggio</label>
+			</p>
+			<p>
+                				<button type="submit" data-dojo-type="dijit.form.Button">Invia</button>
+				<button type="button" data-dojo-type="dijit.form.Button" onclick="ticketMessages.reset(this)">Resetta</button>
+			</p>
+		</div>
+	</fieldset>
+</form>
+<div class="timestamp" title="1660122013"></div>
+<span><!-- Needed to disable .dijitContentPaneSingleChild --></span>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+<form class="std" id="noteAddForm456429" method="post" action="/it/ticket/notes/add" data-dojo-type="dijit.form.Form">
+	<script type="dojo/connect" data-dojo-event="onSubmit" data-dojo-args="event">ticketData.sendForm(this,event)</script>
+	<input type="hidden" name="id" value="456429"/>
+	<input type="hidden" name="formToken" value="d7b881fbd603eaa7a8e9956816b592e7" />
+	<input type="hidden" name="description" id="noteAddDesc456429" />
+	<fieldset class="objContainer noteContainer">
+		<legend>Nuova nota</legend>
+		<div class="mainData">
+			<div data-dojo-type="dijit.Editor" data-dojo-props="height:'80px',plugins:['undo','redo','|','bold','italic','underline','strikethrough','|','subscript','superscript','|','insertOrderedList','insertUnorderedList','|','indent','outdent','|','removeFormat']">
+				<script type="dojo/connect" data-dojo-event="onChange" data-dojo-args="value">dojo.attr(dojo.byId("noteAddDesc456429"),"value",value);</script>
+			</div>
+						<input data-dojo-type="dijit.form.CheckBox" name="private" value="1" checked="checked" id="noteAddPrivate456429" />
+			<label for="noteAddPrivate456429">Privata</label>
+						<button type="submit" data-dojo-type="dijit.form.Button">Carica</button>
+		</div>
+	</fieldset>
+</form>
+<div class="objContainer noteContainer">
+	<div class="mainData">
+				<div class="noteDescription">Da richiamare, impegnata in riunione</div>
+				<div class="clear"></div>
+	</div>
+	<div class="infoData">
+						    <a class="actionIcon">
+        		        		<img alt="Privata" title="Privata" src="/img/_core/notes/private.png" width="16" height="16" />
+        		    		</a>
+				<dl class="clearfix">
+			<dt>Inserita da:</dt><dd>Milani Martina</dd>
+			<dt>In data:</dt><dd>10/08/2022 10:21:13</dd>
+		</dl>
+	</div>
+</div>
+<div class="timestamp" title="1660122013"></div>
+<span><!-- Needed to disable .dijitContentPaneSingleChild --></span>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<form class="std newline fixedInputsWidth" id="attachmentUploadForm456429" method="post" enctype="multipart/form-data" action="/it/ticket/attachments/add" data-dojo-type="dijit.form.Form">
+	<input type="hidden" name="id" value="456429"/>
+	<input type="hidden" name="formToken" value="d0a33bab182d618c70334eff8177367c" />
+	<fieldset class="objContainer attachmentContainer">
+		<legend>Nuovo allegato</legend>
+		<div class="mainData">
+			<p>
+				<label for="attachmentUploadFile456429"><span class="required">* </span>File (max 100 MB):</label>
+				<input type="file" id="attachmentUploadFile456429" name="file" /> <!-- data-dojo-type="dojox.form.FileInput" -->
+			</p>
+			<p>
+				<label for="attachmentUploadDesc456429">Descrizione:</label>
+				<input type="text" id="attachmentUploadDesc456429" name="description" data-dojo-type="dijit.form.TextBox"  />
+			</p>
+			<p>
+				<button type="button" data-dojo-type="dijit.form.Button">
+					<script type="dojo/connect" data-dojo-event="onClick">ticketData.sendForm(dijit.byId('attachmentUploadForm456429'))</script>
+					Carica				</button>
+			</p>
+		</div>
+	</fieldset>
+</form>
+<div class="timestamp" title="1660122013"></div>
+<span><!-- Needed to disable .dijitContentPaneSingleChild --></span>
+			
+			
+			
+			
+			
+			
+			
+			
