@@ -16,6 +16,8 @@ RUN pip install telepot
 
 RUN pip install requests
 
+RUN pip install -U scikit-learn scipy matplotlib
+
 
 
 CMD [ "python", "./telepot/tele.py" ]

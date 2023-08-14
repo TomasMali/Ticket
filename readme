@@ -1,1 +1,4 @@
 docker run -it -d --restart always --name c-ticket tommal/ticket
+
+
+pip3 install -U scikit-learn scipy matplotlib
