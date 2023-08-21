@@ -110,9 +110,9 @@ def getDetail(ticketId):
 
 
         # getObjectAndDescription('Assistenza Vinicoli','JExp')
-        s_match(description)
+        # s_match(description)
 
-        return 
+         
         if not soluzione.replace("\n", ""):
             return False
         
@@ -146,13 +146,15 @@ def get_ids_from_json_file(file_path):
     ids = [item['id'] for item in data['data']]
     return ids
 
-# file_path = 'data.json'
-# ids_list = get_ids_from_json_file("/Users/tommal/Desktop/tickets.json")
-# # print(ids_list)
 
 
-# for ticket in ids_list:
-#     getDetail(ticket)
+file_path = 'data.json'
+ids_list = get_ids_from_json_file("/Users/tommal/Desktop/tickets.json")
+# print(ids_list)
+
+
+for ticket in ids_list:
+    getDetail(ticket)
 
 
 ############################################################
@@ -191,10 +193,6 @@ def s_match(w_target):
         print("Match:", match)
         print("Similarity score:", similarity_score)
         print("\n")
-
-
-
-# getDetail("491624")
 
 
 

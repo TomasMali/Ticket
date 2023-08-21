@@ -7,7 +7,7 @@ from telepot.loop import MessageLoop
 #from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 import keyboards
 
-import filter
+
 import ticketToday
 import insertCompetence
 
@@ -15,8 +15,12 @@ import insertCompetence
 import sys
 sys.path.append('../conn')
 import user
+# sys.path.append('../telepot')
+import filter
 sys.path.append('../api')
 import phrase_similarity
+
+
 
 
 
@@ -102,9 +106,11 @@ def on_chat_message(msg):
              ticketId = str(msg['text'])[18:] 
              bot.sendMessage(chat_id, "Attendere per favore, sto caricando i dettagli per il ticket <b>" + ticketId +"</b> ....", parse_mode='HTML')
             # Send feedback
-             if int(chat_id) == 145645559:
+             if int(chat_id) != 145645559:
+               print("SONO IO: ")
                bot.sendMessage(145645559, "📌📌📌📌📌 \n Aperto Dettaglio Ticket nr: " + ticketId + "  [ " + str(user_id) + " " + first_name+ " "+ last_name + " ]")
              readyPdf = ticketToday.getDetailTicket(ticketId)
+             print(readyPdf)
             #  pdf_file = "json/" + str(ticketId) + "_details.pdf"
              html_file = "json/" + str(ticketId) + "_details.html"
              if readyPdf:
@@ -152,20 +158,16 @@ try:
 
       print("Passati 30 Secondi \n")
       tids = user.getUsers()
-      print(tids)
-      print("\n")
       for u in tids:
          if u is not None and u[0] is not None:
             newTicketList = ticketToday.getTicketTodayForNotification(int(u[0]))
-            print("\n")
-            print(newTicketList)
             for ticket in newTicketList:
                   bot.sendMessage(int(u[0]), ticket)
                   # Guessing from other ticket
-                  if ticket.startswith("🎫 /Ticket_dettaglio_"):
-                     best_matches_indices = phrase_similarity.getDetail(ticket.split("_")[-1])
-                     for ticket_url in best_matches_indices:
-                        bot.sendMessage(int(u[0]), str(ticket_url))
+                  # if ticket.startswith("🎫 /Ticket_dettaglio_"):
+                  best_matches_indices = phrase_similarity.getDetail(ticket.split("_")[-1])
+                  for ticket_info in best_matches_indices:
+                     bot.sendMessage(int(u[0]), str(ticket_info))
 
 
       time.sleep(30)

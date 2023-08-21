@@ -19,7 +19,7 @@ def deleteDocs(ticketId):
 
 
 def getDetail(ticketId):
-    # print("arrivato con :   " + str(ticketId))
+    print("arrivato con :   " + str(ticketId))
 
     pdf_file = "json/" + str(ticketId) + "_details.pdf"
     html_file = "json/" + str(ticketId) + "_details.html"
@@ -51,7 +51,7 @@ def getDetail(ticketId):
         response = requests.get('https://tsnew.sanmarcoweb.com/it/ticket/details/index/id/'+ str(ticketId), cookies=cookies, headers=headers)
 
         content = response.text
-        # print(content)
+        print(html_file)
         with open(html_file, 'w') as f:
             f.write(str(content.replace('rows="7"', ' rows="10" cols="100" ')).encode('latin1').decode('utf8'))  
 

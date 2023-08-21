@@ -1,11 +1,12 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-import connection
 import requests
+import re
+import json
+
 import traceback
 import logging
 import cockie
-import re
+import connection
+
 
 
 def getConn():
@@ -17,6 +18,7 @@ def closeConnection(connection,cursor):
         cursor.close()
         connection.close()
 
+file_path = "output.json"
 
 def extract_text_between_markers(text, start_marker, end_marker):
     pattern = re.compile(f'{re.escape(start_marker)}(.*?){re.escape(end_marker)}', re.DOTALL)
@@ -25,75 +27,21 @@ def extract_text_between_markers(text, start_marker, end_marker):
         return match.group(1).strip()
     return None
 
+
+
 # Returns all the filters inserted by a user
 def getObjectAndDescription(area,prodotto):
     connection = getConn()
     cursor = connection.cursor()
     
     postgreSQL_select_Query = "select descrizione AS result from ticket_big where competenze ='" + str(area) + "' AND prodotto = '" + prodotto + "' " #+ " OR prodotto ='' "
-    # print(postgreSQL_select_Query)
+    print(postgreSQL_select_Query)
     cursor.execute(postgreSQL_select_Query)
     publisher_records = cursor.fetchall()
 
     closeConnection(connection,cursor)
     # print(publisher_records)
     return publisher_records
-
-def get_all_info(description):
-    connection = getConn()
-    cursor = connection.cursor()
- 
-    postgreSQL_select_Query = """select id,soluzione from ticket_big where descrizione = %s """
-    record_to_insert = (str(description),)
-
-    cursor.execute(postgreSQL_select_Query, record_to_insert)
-
-    # cursor.execute(postgreSQL_select_Query)
-    publisher_records = cursor.fetchall()
-
-    closeConnection(connection, cursor)
-    # print(publisher_records)
-    # print(publisher_records[0][0])
-    return publisher_records[0]
-
-
-
-
-
-def start_guessing(target_phrase, area, prodotto):
-
-    # print("\nSearching: " + target_phrase + "\n Area: "+ area + " Prodoro: "+ prodotto + "\n")
-
-    w_list = getObjectAndDescription(area,prodotto)
-        # print("\n\n")
-        # print(w_list)
-        # print("\n\n")
-    phrases = [item[0] for item in w_list]
-
-    # Create the TF-IDF vectorizer
-    vectorizer = TfidfVectorizer()
-
-    # Transform the target phrase and list of phrases
-    tfidf_matrix = vectorizer.fit_transform([target_phrase] + phrases)
-    similarity_matrix = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:])
-
-    # Get the indices of the best 5 matches
-    best_matches_indices = similarity_matrix.argsort()[0][-6:-1][::-1]
-
-    final_list = []
-
-    # Print the best matches
-    for index in best_matches_indices:
-        complete_ticket = get_all_info(phrases[index])
-
-        print("Possibli soluzione: https://tsnew.sanmarcoweb.com/it/ticket/details/index/id/" + complete_ticket[0])
-        print("Solution: " + complete_ticket[1])
-        final_list.append("Possibile soluzione: [ " + complete_ticket[0] + " ] \n" + str(complete_ticket[1]))
-        print("\n")
-
-    return final_list
-
-
 
 
 def getDetail(ticketId):
@@ -152,12 +100,104 @@ def getDetail(ticketId):
         prodotto = extract_text_between_markers(prodotto, prodotto_final_start, prodotto_final_end)
 
         # print(ticketId+ " --> Cercando --> ", description)
-        return start_guessing(description, competenze.strip(), prodotto.strip())
-         
+        # print("Descrizione: ", description)
+        # print("Competenze: ", competenze)
+        # print("Soluzione: ", soluzione)
+        # print("Prodotto: ", prodotto)
 
+
+        # getObjectAndDescription('Assistenza Vinicoli','JExp')
+        # s_match(description)
+
+         
+        if not soluzione.replace("\n", ""):
+            return False
+        
+        connection = getConn()
+        cursor = connection.cursor()
+
+        postgres_insert_query = """ INSERT INTO ticket_big (id, oggetto,descrizione, competenze, soluzione,prodotto) VALUES (%s,%s,%s,%s,%s,%s)"""
+        record_to_insert = (str(ticketId), oggetto.replace("\n", ""),description.replace("\n", ""), competenze.replace("\n", ""),soluzione.replace("\n", ""),prodotto.replace("\n", ""))
+        cursor.execute(postgres_insert_query, record_to_insert)
+
+        connection.commit()
+        count = cursor.rowcount
+        if count <1:
+            return False
+        print(ticketId + "\n\n")
+        print(count, "Record inserted successfully into sort table")
+        closeConnection(connection,cursor)
+        return True
+    
     except Exception as e:
           logging.error(traceback.format_exc())
           return False
 
 
-# getDetail("491624")
+# for ticket in range(456424,456429):
+#         getDetail(ticket)
+
+def get_ids_from_json_file(file_path):
+    with open(file_path, 'r') as json_file:
+        data = json.load(json_file)
+
+    ids = [item['id'] for item in data['data']]
+    return ids
+
+
+
+file_path = 'data.json'
+ids_list = get_ids_from_json_file("/Users/tommal/Desktop/tickets.json")
+# print(ids_list)
+
+
+for ticket in ids_list:
+    getDetail(ticket)
+
+
+############################################################
+
+
+def s_match(w_target):
+    # w_target = "JExp non funziona per un problema delle dogane:Esiste una procedura di emergenza per inviare i DAA?"
+
+    # List of w1 to w500
+    # w_list = [
+    #     ("VIOLAZIONE REGOLA C070 non riusciamo a fare l'EAD"),
+    #     ("L'invio dell'E-ad si blocca per la presenza dell'errore violazione regola C070")
+    # ]
+
+    w_list = getObjectAndDescription('Assistenza Vinicoli','JExp')
+    # print("\n\n")
+    # print(w_list)
+    # print("\n\n")
+    w_list = [item[0] for item in w_list]
+    # w_list = ["tempo bello", "molto", "usciamo fuori"]
+
+
+    # Calculate similarity scores for each w in w_list and create a list of tuples
+    similarity_scores = [(w, nlp(w_target).similarity(nlp(w))) for w in w_list]
+
+    # Sort the list of tuples based on similarity score in descending order
+    sorted_similarity_scores = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
+
+    # Get the best 5 matches from the sorted list
+    best_matches = sorted_similarity_scores[:5]
+
+    # Print the best 5 matches
+    print("\n\n")
+    print("Top 5 matches:")
+    for match, similarity_score in best_matches:
+        print("Match:", match)
+        print("Similarity score:", similarity_score)
+        print("\n")
+
+
+
+
+
+
+
+
+
+
