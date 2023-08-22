@@ -19,6 +19,9 @@ def closeConnection(connection,cursor):
 
 
 def extract_text_between_markers(text, start_marker, end_marker):
+    # print(text)
+    # print(start_marker)
+    # print(end_marker)
     pattern = re.compile(f'{re.escape(start_marker)}(.*?){re.escape(end_marker)}', re.DOTALL)
     match = pattern.search(text)
     if match:
@@ -43,7 +46,7 @@ def get_all_info(description):
     connection = getConn()
     cursor = connection.cursor()
  
-    postgreSQL_select_Query = """select id,soluzione from ticket_big where descrizione = %s """
+    postgreSQL_select_Query = """select id,soluzione,descrizione from ticket_big where descrizione = %s """
     record_to_insert = (str(description),)
 
     cursor.execute(postgreSQL_select_Query, record_to_insert)
@@ -81,16 +84,16 @@ def start_guessing(target_phrase, area, prodotto):
     best_matches_indices = similarity_matrix.argsort()[0][-6:-1][::-1]
 
     final_list = []
-
+    i = 1
     # Print the best matches
     for index in best_matches_indices:
         complete_ticket = get_all_info(phrases[index])
 
-        print("Possibli soluzione: https://tsnew.sanmarcoweb.com/it/ticket/details/index/id/" + complete_ticket[0])
+        print("Possibli soluzione " + str(i) + ") : https://tsnew.sanmarcoweb.com/it/ticket/details/index/id/" + complete_ticket[0])
         print("Solution: " + complete_ticket[1])
-        final_list.append("Possibile soluzione: [ " + complete_ticket[0] + " ] \n" + str(complete_ticket[1]))
+        final_list.append("Possibile soluzione "+ str(i) + ") : [ " + complete_ticket[0] + " ] \n DESCRIZIONE: [ " + str(complete_ticket[2]) + " ] \n SOLUZIONE [ " + str(complete_ticket[1]) + " ]" )
         print("\n")
-
+        i +=1
     return final_list
 
 
@@ -159,5 +162,4 @@ def getDetail(ticketId):
           logging.error(traceback.format_exc())
           return False
 
-
-# getDetail("491624")
+# getDetail("505532")

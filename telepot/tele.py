@@ -161,13 +161,18 @@ try:
       for u in tids:
          if u is not None and u[0] is not None:
             newTicketList = ticketToday.getTicketTodayForNotification(int(u[0]))
+            
             for ticket in newTicketList:
-                  bot.sendMessage(int(u[0]), ticket)
-                  # Guessing from other ticket
-                  # if ticket.startswith("🎫 /Ticket_dettaglio_"):
-                  best_matches_indices = phrase_similarity.getDetail(ticket.split("_")[-1])
-                  for ticket_info in best_matches_indices:
-                     bot.sendMessage(int(u[0]), str(ticket_info))
+               bot.sendMessage(int(u[0]), ticket)
+               # Guessing from other ticket
+               # if ticket.startswith("🎫 /Ticket_dettaglio_"):
+               # tarket_ticket = str(ticket.split("_")[-1]).strip()
+               prefix = "🎫 /Ticket_dettaglio_"
+               ticket_value = ticket.split(prefix, 1)[-1].split("\n", 1)[0].strip()
+               print(str(ticket_value))
+               best_matches_indices = phrase_similarity.getDetail(ticket_value)
+               for ticket_info in best_matches_indices:
+                   bot.sendMessage(int(u[0]), str(ticket_info))
 
 
       time.sleep(30)
