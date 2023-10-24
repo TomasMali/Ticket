@@ -15,12 +15,12 @@ def closeConnection(connection,cursor):
 
 
 # Insert a ticket if not exsists
-def insertTicket(fid, ticket, client, subject, problem, criticity, team, opened_day):
+def insertTicket(fid, ticket):
     connection = getConn()
     cursor = connection.cursor()
 
-    postgres_insert_query = """ INSERT INTO tickets (fid, ticket, client, subject, problem, criticity, team, opened_day) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
-    record_to_insert = (fid, ticket, client, subject, problem, criticity, team, opened_day)
+    postgres_insert_query = """ INSERT INTO tickets (fid, ticket) VALUES (%s,%s)"""
+    record_to_insert = (fid, ticket)
     cursor.execute(postgres_insert_query, record_to_insert)
 
     connection.commit()
@@ -46,7 +46,7 @@ def getTicketsByTid(tid):
     closeConnection(connection,cursor)
     return publisher_records
 
-# Returns all the ticket by filtro id and sort
+# Returns all the ticket by filter id and ticket
 def getTickets(fid, ticket):
     connection = getConn()
     cursor = connection.cursor()

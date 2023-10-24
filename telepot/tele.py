@@ -29,6 +29,7 @@ import phrase_similarity
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 def on_chat_message(msg):
+   
    try:
     first_name = msg['from']['first_name']
    #  last_name = msg['from']['last_name']
@@ -39,26 +40,62 @@ def on_chat_message(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
     print('Chat Message:', last_name, first_name, chat_id)
     print(content_type)
+
+    # Always check if user has been inserted and authenticated successfully
+    # Block only if the user is inserted and the status is "P" pending 
+    userChecked = user.getUserByTid(user_id)
+    if userChecked and (userChecked[0][3]) == 'P':
+                   bot.sendMessage(user_id, "In attesa che un amministratore accetti la sua richiesta \n Per favore attendere a breve sarà approvata") 
+                   bot.sendMessage(145645559, "🆕🆕🆕🆕🆕🆕🆕 Utente nuovo: [ " + str(user_id) + " " + first_name+ " "+ last_name + " ] Approva qui: \n" + "/Approval_"+ str(chat_id))
+                   return
+    
     if content_type == 'text':
+       
        if msg['text'] == '/start':
             keyboard = keyboards.getKeyboard()
+            # If user exists it shows the main meny
             if user.insertUser(user_id, first_name, last_name):
-                bot.sendMessage(chat_id, 'Registrazione effettuata correttamente!', reply_markup=keyboard) 
+                bot.sendMessage(chat_id, 'Registrazione effettuata correttamente. \n Per favore attendere che un amministratore approvi la sua richiesta') 
                 bot.sendDocument(chat_id=chat_id, document=open("gifs/welcome.gif", 'rb'))
-                bot.sendMessage(145645559, "Utente nuovo: [ " + str(user_id) + " " + first_name+ " "+ last_name + " ]")
+                bot.sendMessage(145645559, "Utente nuovo: [ " + str(user_id) + " " + first_name+ " "+ last_name + " ] Approva qui: \n" + "/Approval_"+ str(chat_id))
+                return           
             else:
-                bot.sendMessage(chat_id, 'Sei nel menu principale', reply_markup=keyboard)   
+                bot.sendMessage(chat_id, 'Sei nel menu principale', reply_markup=keyboard)  
+
+       elif str(msg['text']).startswith("/Approval_"):
+            telegramId = str(msg['text'])[10:]
+            is_user_approved, alreadyApproved = user.approveUser(telegramId)
+
+            if alreadyApproved and (alreadyApproved[0][3]) == 'A':
+               bot.sendMessage(user_id, "Utente è stato approvato già precedentemente!")
+               return 
+            
+            if is_user_approved:
+                keyboard = keyboards.getKeyboard()
+                bot.sendMessage(int(telegramId),  "🤝🤝🤝 L'approvazione avvenuta con successo. \n Adesso può usare il menu principale", reply_markup=keyboard) 
+                bot.sendMessage(user_id, "Utente approvato correttamente")
 
        elif msg['text'] == '🖍 Crea filtro x Competenze':
-             comp_first, comp_second = filter.createCompetence()
+             comp_first, comp_second = filter.get_competences()
              bot.sendMessage(chat_id,  comp_first)
              bot.sendMessage(chat_id,  comp_second)
+
+       elif msg['text'] == '📦 Crea filtro x Prodotto':
+             products = filter.get_products()
+             bot.sendMessage(chat_id,  products)
+
+       elif str(msg['text']).startswith("💜💜💜/preferito_"):
+            # Define the emoji and the text
+            ticket_id = str(msg['text'])[16:]
+            bot.sendMessage(145645559,  "Perfetto "+ ticket_id)
 
        elif msg['text'] == '🖍 Crea filtro x Cliente': 
              bot.sendMessage(chat_id, 'dua' )
 
        elif str(msg['text']).startswith("/_id_c_"):  
-            bot.sendMessage(chat_id, insertCompetence.manageCompetence(chat_id,str(msg['text'])[7:]) )
+            bot.sendMessage(chat_id, insertCompetence.manageCompetence(chat_id,str(msg['text'])[7:], "C") )
+       elif str(msg['text']).startswith("/_id_p_"):  
+            bot.sendMessage(chat_id, insertCompetence.manageCompetence(chat_id,str(msg['text'])[7:], "P") )
 
        elif msg['text'] == '📌 I mie filtri': 
              filtersList = filter.getMyFilters(chat_id)
@@ -74,32 +111,20 @@ def on_chat_message(msg):
              else:
                 bot.sendMessage(chat_id,  filterToBeDeletedList) 
 
-       elif str(msg['text']).startswith("/Competenza_id_cf_"): 
-             bot.sendMessage(chat_id, filter.deleteFilter(chat_id, str(msg['text'])[18:] ) ) 
-
-       elif msg['text'] == '🕘 Ticket oggi':
-             listOfStrings =  ticketToday.getTicketToday(chat_id)
-             for ticketItem in listOfStrings:
-                if len(ticketItem) > 4000:
-                   firstpart, secondpart = ticketItem[:int(len(ticketItem)/2)], ticketItem[int(len(ticketItem)/2):]
-                   bot.sendMessage(chat_id, firstpart, parse_mode='HTML')
-                   bot.sendMessage(chat_id, secondpart, parse_mode='HTML')
-                else:
-                   bot.sendMessage(chat_id, ticketItem, parse_mode='HTML') 
-             if len(listOfStrings) < 1:
-                bot.sendMessage(chat_id, "Non esistono ticket oggi")
-
-       elif msg['text'] == '🗂 Ticket ultimi 20': 
-             listOfStrings =  ticketToday.getTicketLast20(chat_id)
-             for ticketItem in listOfStrings:
-                if len(ticketItem) > 4000:
-                   firstpart, secondpart = ticketItem[:int(len(ticketItem)/2)], ticketItem[int(len(ticketItem)/2):]
-                   bot.sendMessage(chat_id, firstpart, parse_mode='HTML')
-                   bot.sendMessage(chat_id, secondpart, parse_mode='HTML')
-                else:
-                   bot.sendMessage(chat_id, ticketItem, parse_mode='HTML')
-             if len(listOfStrings) < 1:
-                bot.sendMessage(chat_id, "Non esistono ticket")
+       elif str(msg['text']).startswith("/Competen_id_cf_") or str(msg['text']).startswith("/Prodotto_id_cf_"): 
+             bot.sendMessage(chat_id, filter.deleteFilter(chat_id, str(msg['text'])[16:] ) ) 
+      # Get ticket today, gets the ticket for each users filter
+      #  elif msg['text'] == '🕘 Ticket oggi':
+      #        listOfStrings =  ticketToday.getTicketToday(chat_id)
+      #        for ticketItem in listOfStrings:
+      #           if len(ticketItem) > 4000:
+      #              firstpart, secondpart = ticketItem[:int(len(ticketItem)/2)], ticketItem[int(len(ticketItem)/2):]
+      #              bot.sendMessage(chat_id, firstpart, parse_mode='HTML')
+      #              bot.sendMessage(chat_id, secondpart, parse_mode='HTML')
+      #           else:
+      #              bot.sendMessage(chat_id, ticketItem, parse_mode='HTML') 
+      #        if len(listOfStrings) < 1:
+      #           bot.sendMessage(chat_id, "Non esistono ticket oggi")
 
       
        elif str(msg['text']).startswith("/Ticket_dettaglio_"): 
@@ -108,7 +133,7 @@ def on_chat_message(msg):
             # Send feedback
              if int(chat_id) != 145645559:
                print("SONO IO: ")
-               bot.sendMessage(145645559, "📌📌📌📌📌 \n Aperto Dettaglio Ticket nr: " + ticketId + "  [ " + str(user_id) + " " + first_name+ " "+ last_name + " ]")
+               bot.sendMessage(145645559, "👥👥👥👥 \n Aperto Dettaglio Ticket nr: " + ticketId + "  [ " + first_name+ last_name  + str(user_id) + " ]")
              readyPdf = ticketToday.getDetailTicket(ticketId)
              print(readyPdf)
             #  pdf_file = "json/" + str(ticketId) + "_details.pdf"
@@ -139,11 +164,16 @@ def on_callback_query(msg):
 
 
 
-test = "5528961366:AAEiCxFr3VwObL3c1zzUXyTAZYRecBZMlWM"
-prod = "5818240231:AAEKPJsGqLOgXCyDf63ya-sJctNIk6hzUXg"
+test = ""
+prod = ""
 bot = telepot.Bot(prod)
 
 import traceback
+
+
+
+
+
 
 try:
    MessageLoop(bot, {'chat': on_chat_message,
@@ -152,25 +182,20 @@ try:
    starttime = time.time()
 
    while 1:
-      # best_matches_indices = phrase_similarity.getDetail("505052")
-      # for ticket_url in best_matches_indices:
-      #       bot.sendMessage(int(145645559), str(ticket_url))
 
       print("Passati 30 Secondi \n")
       tids = user.getUsers()
+      # For each user
       for u in tids:
          if u is not None and u[0] is not None:
             newTicketList = ticketToday.getTicketTodayForNotification(int(u[0]))
-            
             for ticket in newTicketList:
                bot.sendMessage(int(u[0]), ticket)
                # Guessing from other ticket
-               # if ticket.startswith("🎫 /Ticket_dettaglio_"):
-               # tarket_ticket = str(ticket.split("_")[-1]).strip()
                prefix = "🎫 /Ticket_dettaglio_"
                ticket_value = ticket.split(prefix, 1)[-1].split("\n", 1)[0].strip()
                print(str(ticket_value))
-               best_matches_indices = phrase_similarity.getDetail(ticket_value)
+               best_matches_indices = phrase_similarity.start_guessing_new(ticket_value)
                for ticket_info in best_matches_indices:
                    bot.sendMessage(int(u[0]), str(ticket_info))
 

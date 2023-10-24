@@ -9,13 +9,15 @@ def getKeyboard():
     keyboard = ReplyKeyboardMarkup(
                                 keyboard=[
                                     [KeyboardButton(text="🖍 Crea filtro x Competenze")
-                                    # , KeyboardButton(text="Crea filtro x Cliente")
-                                    ,KeyboardButton(text="📌 I mie filtri"),
-                                     KeyboardButton(text="✖ Cancella filtro")]
+                                    , KeyboardButton(text="📦 Crea filtro x Prodotto")
+                                    ,KeyboardButton(text="📌 I mie filtri")
+                                    ]
                                     ,
                                         [
-                                 KeyboardButton(text="🕘 Ticket oggi")
-                                    ,KeyboardButton(text="🗂 Ticket ultimi 20")]
+                                    KeyboardButton(text="✖ Cancella filtro"),
+                                    # KeyboardButton(text="🕘 Ticket oggi"),
+                                    # KeyboardButton(text="🗂 Ticket ultimi 20")
+                                    ]
                                 ]
                             )
     return keyboard  

@@ -1,1 +1,25 @@
 "🎫 /Ticket_dettaglio_456821\n🏢 Cliente: ARCHITA S.R.L.\n🔎 Oggetto: ARCHITA modificare l2l con ip del nuovo server di jmes\n🎨 Gravita': GIALLO\n🧑 Competenza': ITech\n📅 Apertura': 2022-08-16 10:05:07\n\n", "🎫 /Ticket_dettaglio_456821\n🏢 Cliente: ARCHITA S.R.L.\n🔎 Oggetto: ARCHITA modificare l2l con ip del nuovo server di jmes\n🎨 Gravita': GIALLO\n🧑 Competenza': ITech\n📅 Apertura': 2022-08-16 10:05:07\n\n🎫 /Ticket_dettaglio_456820\n🏢 Cliente: GAMMA INFORMATICA S.R.L.\n🔎 Oggetto: confalone - qedd in riavvio\n🎨 Gravita': GIALLO\n🧑 Competenza': ITech\n📅 Apertura': 2022-08-16 09:50:37\n\n", "🎫 /Ticket_dettaglio_456821\n🏢 Cliente: ARCHITA S.R.L.\n🔎 Oggetto: ARCHITA modificare l2l con ip del nuovo server di jmes\n🎨 Gravita': GIALLO\n🧑 Competenza': ITech\n📅 Apertura': 2022-08-16 10:05:07\n\n🎫 /Ticket_dettaglio_456820\n🏢 Cliente: GAMMA INFORMATICA S.R.L.\n🔎 Oggetto: confalone - qedd in riavvio\n🎨 Gravita': GIALLO\n🧑 Competenza': ITech\n📅 Apertura': 2022-08-16 09:50:37\n\n🎫 /Ticket_dettaglio_456814\n🏢 Cliente: CIESSE S.R.L.\n🔎 Oggetto: Desktop remoto non funziona\n🎨 Gravita': GIALLO\n🧑 Competenza': ITech\n📅 Apertura': 2022-08-16 08:30:49\n\n"
+
+
+
+
+
+
+curl 'https://tsnew.sanmarcoweb.com/it/ticket/search/get-tickets' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: it-IT,it;q=0.9,la;q=0.8' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Cookie: language=it; sid=olef5hfkj5cp775ajaudi0j9s3' \
+  -H 'Origin: https://tsnew.sanmarcoweb.com' \
+  -H 'Referer: https://tsnew.sanmarcoweb.com/it/ticket' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -H 'sec-ch-ua: "Google Chrome";v="117", "Not;A=Brand";v="8", "Chromium";v="117"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  --data-raw 'params=%7B%22where%22%3A%5B%7B%22field%22%3A%22and%22%2C%22group%22%3A%5B%7B%22field%22%3A%22prodotto.id%22%2C%22comparison%22%3A%22%3D%22%2C%22value%22%3A%2213%22%7D%5D%7D%5D%2C%22headers%22%3A%5B%22ticket%22%2C%22data%22%2C%22stato%22%2C%22cliente%22%2C%22oggetto%22%2C%22segnalatore%22%2C%22gravita%22%2C%22priorita%22%2C%22competenza%22%5D%2C%22sorting%22%3A%5B%7B%22field%22%3A%22segnalazioni_apertura%22%2C%22order%22%3A%22desc%22%7D%5D%7D' \
+  --compressed

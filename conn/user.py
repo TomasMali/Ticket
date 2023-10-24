@@ -14,9 +14,11 @@ def closeConnection(connection,cursor):
 
 
 
-# Insert a telegram user if not exsists
+'''Insert a telegram user if it doesnt exist
+   Return True if user has been inserted successfully, False otherwise
+'''
 def insertUser(tid, name, surname, status='P', admin=False ):
-    if isUserRegisterd(tid):
+    if getUserByTid(tid):
         return False
  
     connection = getConn()
@@ -50,26 +52,42 @@ def getUsers():
     closeConnection(connection,cursor)
     return publisher_records
 
-#  Checks if a user is registred
-def isUserRegisterd(tid):
+'''  Gets the user by telegram id '''
+def getUserByTid(tid):
     connection = getConn()
     cursor = connection.cursor()
 
     postgreSQL_select_Query = "select * from users where tid=" + str(tid)
  
     cursor.execute(postgreSQL_select_Query)
-    print("Selecting rows from publisher table using cursor.fetchall")
     publisher_records = cursor.fetchall()
 
     closeConnection(connection,cursor)
-
-    if not publisher_records:
-        return False
-    else:
-        return True    
+    return publisher_records
+    # if not publisher_records:
+    #     return False
+    # else:
+    #     return True    
   
+
+def approveUser(tid):
+
+    alreadyApproved = getUserByTid(tid)
+    connection = getConn()
+    cursor = connection.cursor()
+
+    postgreSQL_update_Query = "UPDATE users SET status = 'A' WHERE tid = %s"
+ 
+    cursor.execute(postgreSQL_update_Query, (tid,))
+    connection.commit()
+    count = cursor.rowcount
+    print(count, "Record updated successfully ")
+    closeConnection(connection,cursor)
+    return count > 0, alreadyApproved
+
 
 # insertUser(22222, 'boh','bah')
 #getUsers()
-#isUserRegisterd(222222)
+# if getUserByTid(145645559):
+#     print(getUserByTid(145645559)[0][3])
 

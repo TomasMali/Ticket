@@ -17,6 +17,8 @@ def closeConnection(connection,cursor):
 
 # Insert a filter if not exsists
 def insertFilter(tid, sort, sort_value ):
+    if str(sort_value).strip().startswith("_"):
+        sort_value =  "-" + (str(sort_value).strip())[1:]
     if getFilterByParam(tid, sort, sort_value):
         return False
 
@@ -41,7 +43,7 @@ def getFilters(tid):
     connection = getConn()
     cursor = connection.cursor()
     
-    postgreSQL_select_Query = "select * from filters where tid =" + str(tid) + " order by tid"
+    postgreSQL_select_Query = "select * from filters where tid =" + str(tid) + " order by sort"
  
     cursor.execute(postgreSQL_select_Query)
     publisher_records = cursor.fetchall()
@@ -109,4 +111,4 @@ def deleteFilter(telid, id):
 
 #getFilters(965744443)
 #deleteFilter(8)
-#getFilters(965744443)
+# print(getFilters(145645559))

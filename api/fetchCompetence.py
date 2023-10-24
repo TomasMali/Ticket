@@ -7,6 +7,7 @@ def getCompetence():
         'language': 'it',
         'sid': cockie.id,
     }
+    # 70e7557a9cce7aae244f2c3faa4d548b
 
     headers = {
         'Accept': 'application/javascript, application/json',

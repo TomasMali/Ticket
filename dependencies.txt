@@ -2,5 +2,5 @@ telepot
 psycopg2
 requests
 pdfkit
-
-
+scikit-learn
+mysql-connector-python

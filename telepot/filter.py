@@ -3,26 +3,50 @@ sys.path.append('../api')
 import fetchCompetence
 sys.path.append('../conn')
 import filters
+sys.path.append('../conn')
+import mysql5
 
 
 import json
 
 competenze = ""
 
-def createCompetence():
-    docList = json.loads(fetchCompetence.getCompetence())
+
+
+'''Returns all the competences from db'''
+def get_competences():
+    docList = mysql5.getCompetences()
     competenze1 = ""
     competenze2 = ""
     docSize =  0
     for i in docList:
         docSize +=1 
+        id_c = int(i[0])
+
+        if id_c < 0:
+            id_c = str( "_" + str(id_c)[1:] )
+        else:
+            id_c = str(id_c)
+
+        competence = str(i[1])
         
         if docSize > 80:
-           competenze2 +=  str(i['label']).strip() + " " + "/_id_c_" + str(i['id']).strip() + "\n"
+           competenze2 +=  competence + " " + "/_id_c_" + id_c + "\n"
         else:
-           competenze1 += str(i['label']).strip() + " " + "/_id_c_" + str(i['id']).strip() + "\n"
+           competenze1 +=   competence + " " + "/_id_c_" + id_c + "\n"
 
     return competenze1, competenze2
+
+
+def get_products():
+    docList = mysql5.getProducts()
+    productrs = ""
+    print("lista:", docList)
+    for i in docList:
+        productrs +=   str(i[1]) + " " + "/_id_p_" + str(i[0]) + "\n"
+    print(productrs)
+    return productrs
+
 
 
 def decodeCompetence(cid,docList):
@@ -36,18 +60,26 @@ def decodeCompetence(cid,docList):
 def getMyFilters(tid):
      mylist = filters.getFilters(tid)
      listFilterAsString= ""
-     docList = json.loads(fetchCompetence.getCompetence())
      for i in mylist:
-         listFilterAsString +=  "Competenza: (" + str(i[3]) + ")  " + decodeCompetence(str(i[3]),docList) + "\n"
+         tipo = ""
+         if str(i[2]) == "C":
+             tipo = "Competenza"
+         elif str(i[2]) == 'P':
+             tipo = "Prodotto"
+         listFilterAsString +=  tipo + ": (" + str(i[3]) + ")  " + mysql5.getProductOrCompetence(str(i[2]), str(i[3]))[0][0] + "\n"
      return listFilterAsString
 
 
 def showFilterToBeDelete(tid):
      mylist = filters.getFilters(tid)
      listFilterAsString= ""
-     docList = json.loads(fetchCompetence.getCompetence())
      for i in mylist:
-         listFilterAsString +=  "/Competenza_id_cf_" + str(i[0]) + ")  " + decodeCompetence(str(i[3]),docList) + "\n"
+         tipo = ""
+         if str(i[2]) == "C":
+             tipo = "Competen"
+         elif str(i[2]) == 'P':
+             tipo = "Prodotto"
+         listFilterAsString +=  "/" + tipo + "_id_cf_" + str(i[0]) + ")  " + mysql5.getProductOrCompetence(str(i[2]), str(i[3]))[0][0] + "\n"
      return listFilterAsString
 
 
@@ -62,3 +94,4 @@ def deleteFilter(telid, fid):
 
 # print(getMyFilters(145645559))
 #print(deleteFilter(145645559))
+# get_competence()
