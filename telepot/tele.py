@@ -83,10 +83,10 @@ def on_chat_message(msg):
              products = filter.get_products()
              bot.sendMessage(chat_id,  products)
 
-       elif str(msg['text']).startswith("💜/preferito_"):
+       elif str(msg['text']).startswith("/preferito_"):
             # Define the emoji and the text
-            ticket_id = str(msg['text'])[len("💜/preferito_"):]
-            bot.sendMessage(145645559,  "Perfetto "+ ticket_id)
+            ticket_id = str(msg['text'])[len("/preferito_"):]
+            bot.sendMessage(145645559,  "Perfetto "+ str(ticket_id) + " Da "+ str(chat_id))
 
        elif msg['text'] == '🖍 Crea filtro x Cliente': 
              bot.sendMessage(chat_id, 'dua' )

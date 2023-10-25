@@ -17,8 +17,8 @@ def closeConnection(connection,cursor):
 
 def start_guessing_new(ticket):
 
-    competence_origin, program_origin, problem_origin = mysql5.getCompetenceOrProgram(ticket)
-    w_list = mysql5.getProblemaBYCompetenzaOrProgramma(competence_origin,program_origin)
+    competence_origin, product_origin, problem_origin = mysql5.getCompetenceOrProdotto(ticket)
+    w_list = mysql5.getProblemaBYCompetenzaOrProgramma(competence_origin,product_origin)
         # print("\n\n")
     # print(w_list)
         # print("\n\n")

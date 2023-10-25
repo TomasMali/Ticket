@@ -104,11 +104,11 @@ def getProductOrCompetence(type_,value_):
     return publisher_records
 
 
-def getCompetenceOrProgram(ticket):
+def getCompetenceOrProdotto(ticket):
     connection = getMySqlConnection()
     cursor = connection.cursor()
  
-    select_problem = "SELECT COMPETENZA,PROGRAMMA, PROBLEMA FROM segnalazioni where TICKET = " + str(ticket)
+    select_problem = "SELECT COMPETENZA,PRODOTTO, PROBLEMA FROM segnalazioni where TICKET = " + str(ticket)
     cursor.execute(select_problem)
 
     publisher_records = cursor.fetchall()
@@ -117,13 +117,13 @@ def getCompetenceOrProgram(ticket):
     return publisher_records[0][0],publisher_records[0][1],publisher_records[0][2]
 
 
-def getProblemaBYCompetenzaOrProgramma(competence, program):
+def getProblemaBYCompetenzaOrProgramma(competence, prodotto):
     connection = getMySqlConnection()
     cursor = connection.cursor()
     # From DB the competence is not null
-    if program != None and competence != None:
-        select_problem = "SELECT PROBLEMA  FROM segnalazioni where COMPETENZA = " + str(competence)  + "OR PROGRAMMA = " + str(program)+ ""
-    elif program == None:
+    if prodotto != None and competence != None:
+        select_problem = "SELECT PROBLEMA  FROM segnalazioni where COMPETENZA = " + str(competence)  + " AND PRODOTTO = " + str(prodotto)+ ""
+    elif prodotto == None:
         select_problem = "SELECT PROBLEMA  FROM segnalazioni where COMPETENZA = " + str(competence) + ""
 
     cursor.execute(select_problem)
