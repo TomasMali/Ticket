@@ -4,7 +4,6 @@ import os
 import time
 import telepot
 from telepot.loop import MessageLoop
-#from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 import keyboards
 
 
@@ -84,9 +83,9 @@ def on_chat_message(msg):
              products = filter.get_products()
              bot.sendMessage(chat_id,  products)
 
-       elif str(msg['text']).startswith("💜💜💜/preferito_"):
+       elif str(msg['text']).startswith("💜/preferito_"):
             # Define the emoji and the text
-            ticket_id = str(msg['text'])[16:]
+            ticket_id = str(msg['text'])[len("💜/preferito_"):]
             bot.sendMessage(145645559,  "Perfetto "+ ticket_id)
 
        elif msg['text'] == '🖍 Crea filtro x Cliente': 
@@ -190,14 +189,17 @@ try:
          if u is not None and u[0] is not None:
             newTicketList = ticketToday.getTicketTodayForNotification(int(u[0]))
             for ticket in newTicketList:
-               bot.sendMessage(int(u[0]), ticket)
+               hole_message = ticket
+               # bot.sendMessage(int(u[0]), ticket)
                # Guessing from other ticket
                prefix = "🎫 /Ticket_dettaglio_"
                ticket_value = ticket.split(prefix, 1)[-1].split("\n", 1)[0].strip()
-               print(str(ticket_value))
+               # print(str(ticket_value))
                best_matches_indices = phrase_similarity.start_guessing_new(ticket_value)
                for ticket_info in best_matches_indices:
-                   bot.sendMessage(int(u[0]), str(ticket_info))
+                   hole_message += str(ticket_info)
+
+               bot.sendMessage(int(u[0]), str(hole_message))
 
 
       time.sleep(30)

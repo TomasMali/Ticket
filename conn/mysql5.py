@@ -54,7 +54,7 @@ def getTicket(filter_type="", filter_value=""):
     cursor = connection.cursor()
     postgreSQL_select_Query = ""
     if filter_type == "":
-        postgreSQL_select_Query = "select * from  segnalazioni limit 10000"
+        postgreSQL_select_Query = "select * from  segnalazioni limit 2"
     elif filter_type == "C":
         postgreSQL_select_Query = "select s.TICKET,cl.INTESTATARIO,s.OGGETTO,g.GRAVITA ,c.COMPETENZA , p.PRODOTTO ,s.APERTURA from  segnalazioni as s join prodotti as p on  s.PRODOTTO=p.ID join competenze as c on  s.COMPETENZA=c.ID join gravita as g on s.GRAVITA = g.ID  join clienti as cl on cl.ID=s.CLIENTE" + " where s.COMPETENZA ='" +filter_value + "' AND DATE(APERTURA) = CURDATE()"
     elif filter_type == "P":

@@ -1,13 +1,11 @@
 import sys
 sys.path.append('../api')
-import fetchCompetence
+
 sys.path.append('../conn')
 import filters
 sys.path.append('../conn')
 import mysql5
 
-
-import json
 
 competenze = ""
 

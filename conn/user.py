@@ -13,7 +13,6 @@ def closeConnection(connection,cursor):
         connection.close()
 
 
-
 '''Insert a telegram user if it doesnt exist
    Return True if user has been inserted successfully, False otherwise
 '''

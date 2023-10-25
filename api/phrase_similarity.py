@@ -1,11 +1,6 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import connection
-import requests
-import traceback
-import logging
-import cockie
-import re
 import sys
 sys.path.append('../conn')
 import mysql5
@@ -18,31 +13,6 @@ def closeConnection(connection,cursor):
     if connection:
         cursor.close()
         connection.close()
-
-
-def extract_text_between_markers(text, start_marker, end_marker):
-    # print(text)
-    # print(start_marker)
-    # print(end_marker)
-    pattern = re.compile(f'{re.escape(start_marker)}(.*?){re.escape(end_marker)}', re.DOTALL)
-    match = pattern.search(text)
-    if match:
-        return match.group(1).strip()
-    return None
-
-# Returns all the filters inserted by a user
-# def getObjectAndDescription(area,prodotto):
-#     connection = getConn()
-#     cursor = connection.cursor()
-    
-#     postgreSQL_select_Query = "select descrizione AS result from ticket_big where competenze ='" + str(area) + "' AND prodotto = '" + prodotto + "' " #+ " OR prodotto ='' "
-#     # print(postgreSQL_select_Query)
-#     cursor.execute(postgreSQL_select_Query)
-#     publisher_records = cursor.fetchall()
-
-#     closeConnection(connection,cursor)
-#     # print(publisher_records)
-#     return publisher_records
 
 
 def start_guessing_new(ticket):
@@ -69,9 +39,23 @@ def start_guessing_new(ticket):
     # Print the best matches
     for index in best_matches_indices:
         complete_ticket = mysql5.getTicketByProblema(str(phrases[index]))
+        solution_ = str(complete_ticket[1])
+        if len(solution_) > 400:
+            solution_ = solution_[:400] + "..."
+        separator = "\n\n🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹\n\n"  
+        if i ==1:
+            separator = "\n\n🔹🔹🔹🔹🔹🔹🔹🔹🔹1⃣🔹🔹🔹🔹🔹🔹🔹🔹🔹\n"
+        elif i == 2:
+            separator = "🔹🔹🔹🔹🔹🔹🔹🔹🔹2⃣🔹🔹🔹🔹🔹🔹🔹🔹🔹\n"  
+        elif i== 3:
+            separator = "🔹🔹🔹🔹🔹🔹🔹🔹🔹3⃣🔹🔹🔹🔹🔹🔹🔹🔹🔹\n" 
+        elif i== 4:
+            separator = "🔹🔹🔹🔹🔹🔹🔹🔹🔹4⃣🔹🔹🔹🔹🔹🔹🔹🔹🔹\n" 
+        elif i== 5:
+            separator = "🔹🔹🔹🔹🔹🔹🔹🔹🔹5⃣🔹🔹🔹🔹🔹🔹🔹🔹🔹\n" 
 
         # print("Solution: " + complete_ticket[1])
-        final_list.append("Possibile soluzione "+ str(i) + ") : [ 🎫 /Ticket_dettaglio_" + str(complete_ticket[0]) + " ] \n https://tsnew.sanmarcoweb.com/it/ticket/index/index/operation/view/id/" + str(complete_ticket[0]) + " \n SOLUZIONE [ " + str(complete_ticket[1]) + " ]" )
+        final_list.append(separator + " \n [ 🎫 /Ticket_dettaglio_" + str(complete_ticket[0]) + " ] \n https://tsnew.sanmarcoweb.com/it/ticket/index/index/operation/view/id/" + str(complete_ticket[0]) + " \n SOLUZIONE [ " + str(solution_) + " ] \n\n" )
         # print("\n")
         i +=1
     return final_list

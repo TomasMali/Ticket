@@ -59,20 +59,6 @@ def getTickets(fid, ticket):
     closeConnection(connection,cursor)
     return publisher_records
 
-# def getTickets(tid, fid):
-#     connection = getConn()
-#     cursor = connection.cursor()
-
-#     postgreSQL_select_Query = """select * from tickets join filters on tickets.fid  = filters.fid where filters.tid = %s and filters.fid = %s"""
-#     record_to_insert = (tid, fid)
-#     cursor.execute(postgreSQL_select_Query, record_to_insert)
-#     publisher_records = cursor.fetchall()
- 
-#     closeConnection(connection,cursor)
-#     return publisher_records
-
-#getTickets(965744443, 'itech')
-#insertTicket(8, 35345,'Bertin', 'Problemi accise', 'Camion fermo', 'Rosso', 'vinicoli', '01/08/2022 13:06:09')
 
 
 # print(getTicketsByTid(145645559))
