@@ -83,18 +83,49 @@ def on_chat_message(msg):
              products = filter.get_products()
              bot.sendMessage(chat_id,  products)
 
+       elif msg['text'] == '👥 Crea filtro x Area':
+             areas = filter.get_areas()
+             bot.sendMessage(chat_id,  areas)
+
+       elif msg['text'] == '👥 Crea filtro x Sott.Area':
+             areas = filter.get_sub_areas(chat_id)
+             bot.sendMessage(chat_id,  areas)
+
+
+       # Manage Single Ticket Match      
+       elif str(msg['text']).startswith("/tic "):
+            # Define the emoji and the text
+            ticket_id = str(msg['text'])[len("/tic "):]
+            bot.sendMessage(chat_id, "Attendere per favore sto cercando soluzioni...")
+            print("Cerco ticket: ",ticket_id )
+            hole_message =  "Ticket principale da cercare:  https://tsnew.sanmarcoweb.com/it/ticket/index/index/operation/view/id/" + str(ticket_id) + "\n\n"
+            best_matches_indices = phrase_similarity.start_guessing_manual(ticket_id)
+            if len(best_matches_indices) == 0:
+                hole_message += "\n\n Non ho trovato alcun ticket con i parametri del ticket principale: " + str(ticket_id)
+            for ticket_info in best_matches_indices:
+                  hole_message += str(ticket_info)
+
+            bot.sendMessage(chat_id, str(hole_message))
+            if int(chat_id) != 145645559:
+                  bot.sendMessage(145645559,  "Manuale "+  " Da "+ str(ticket_id) + " "+ str(first_name) + str(last_name))
+
+
        elif str(msg['text']).startswith("/preferito_"):
             # Define the emoji and the text
             ticket_id = str(msg['text'])[len("/preferito_"):]
             bot.sendMessage(145645559,  "Perfetto "+ str(ticket_id) + " Da "+ str(chat_id))
 
-       elif msg['text'] == '🖍 Crea filtro x Cliente': 
-             bot.sendMessage(chat_id, 'dua' )
-
        elif str(msg['text']).startswith("/_id_c_"):  
-            bot.sendMessage(chat_id, insertCompetence.manageCompetence(chat_id,str(msg['text'])[7:], "C") )
-       elif str(msg['text']).startswith("/_id_p_"):  
+            bot.sendMessage(chat_id, insertCompetence.manageCompetence(chat_id,str(msg['text'])[7:], "C" ) )
+
+       elif str(msg['text']).startswith("/_id_p_"): 
             bot.sendMessage(chat_id, insertCompetence.manageCompetence(chat_id,str(msg['text'])[7:], "P") )
+
+       elif str(msg['text']).startswith("/_id_area_"): 
+             bot.sendMessage(chat_id, insertCompetence.manageCompetence(chat_id,str(msg['text'])[10:], "A") ) 
+
+       elif str(msg['text']).startswith("/_id_suba_"): 
+             bot.sendMessage(chat_id, insertCompetence.manageCompetence(chat_id,str(msg['text'])[10:], "S") ) 
 
        elif msg['text'] == '📌 I mie filtri': 
              filtersList = filter.getMyFilters(chat_id)
@@ -112,18 +143,7 @@ def on_chat_message(msg):
 
        elif str(msg['text']).startswith("/Competen_id_cf_") or str(msg['text']).startswith("/Prodotto_id_cf_"): 
              bot.sendMessage(chat_id, filter.deleteFilter(chat_id, str(msg['text'])[16:] ) ) 
-      # Get ticket today, gets the ticket for each users filter
-      #  elif msg['text'] == '🕘 Ticket oggi':
-      #        listOfStrings =  ticketToday.getTicketToday(chat_id)
-      #        for ticketItem in listOfStrings:
-      #           if len(ticketItem) > 4000:
-      #              firstpart, secondpart = ticketItem[:int(len(ticketItem)/2)], ticketItem[int(len(ticketItem)/2):]
-      #              bot.sendMessage(chat_id, firstpart, parse_mode='HTML')
-      #              bot.sendMessage(chat_id, secondpart, parse_mode='HTML')
-      #           else:
-      #              bot.sendMessage(chat_id, ticketItem, parse_mode='HTML') 
-      #        if len(listOfStrings) < 1:
-      #           bot.sendMessage(chat_id, "Non esistono ticket oggi")
+
 
       
        elif str(msg['text']).startswith("/Ticket_dettaglio_"): 
@@ -195,7 +215,7 @@ try:
                prefix = "🎫 /Ticket_dettaglio_"
                ticket_value = ticket.split(prefix, 1)[-1].split("\n", 1)[0].strip()
                # print(str(ticket_value))
-               best_matches_indices = phrase_similarity.start_guessing_new(ticket_value)
+               best_matches_indices = phrase_similarity.start_guessing_manual(ticket_value)
                for ticket_info in best_matches_indices:
                    hole_message += str(ticket_info)
 

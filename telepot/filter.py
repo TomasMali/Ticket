@@ -45,6 +45,30 @@ def get_products():
     print(productrs)
     return productrs
 
+def get_areas():
+    area_list = mysql5.get_areas()
+    areas = ""
+    print("lista:", area_list)
+    for i in area_list:
+        areas +=  " " + str(i[2]) + "   "+   "/_id_area_" + str(i[0]) + "\n"
+    print(areas)
+    return areas
+
+def get_sub_areas(tid):
+
+    # fet the area for the user tid
+    sub_areas = filters.get_area_from_tid(tid)
+    if len(sub_areas) < 1:
+        return "Non esiste Area per la sottoarea selezionata. Inserire prima l'area"
+
+    s_area_list = mysql5.get_sub_areas(sub_areas[0][0])
+    s_areas = ""
+    print("lista:", s_area_list)
+    for i in s_area_list:
+        s_areas +=  " " + str(i[2]) + "   "+   "/_id_suba_" + str(i[0]) + "\n"
+    print(s_areas)
+    return s_areas
+
 
 
 def decodeCompetence(cid,docList):
@@ -64,6 +88,10 @@ def getMyFilters(tid):
              tipo = "Competenza"
          elif str(i[2]) == 'P':
              tipo = "Prodotto"
+         elif str(i[2]) == 'A':
+             tipo = "Area"
+         elif str(i[2]) == 'S':
+             tipo = "Sottoarea"
          listFilterAsString +=  tipo + ": (" + str(i[3]) + ")  " + mysql5.getProductOrCompetence(str(i[2]), str(i[3]))[0][0] + "\n"
      return listFilterAsString
 
@@ -77,6 +105,10 @@ def showFilterToBeDelete(tid):
              tipo = "Competen"
          elif str(i[2]) == 'P':
              tipo = "Prodotto"
+         elif str(i[2]) == 'A':
+             tipo = "Area"
+         elif str(i[2]) == 'S':
+             tipo = "Sottoarea"
          listFilterAsString +=  "/" + tipo + "_id_cf_" + str(i[0]) + ")  " + mysql5.getProductOrCompetence(str(i[2]), str(i[3]))[0][0] + "\n"
      return listFilterAsString
 

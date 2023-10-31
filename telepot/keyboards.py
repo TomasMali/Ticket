@@ -14,8 +14,9 @@ def getKeyboard():
                                     ]
                                     ,
                                         [
-                                    KeyboardButton(text="✖ Cancella filtro"),
-                                    # KeyboardButton(text="🕘 Ticket oggi"),
+                                    KeyboardButton(text="✖ Cancella filtro")
+                                    # KeyboardButton(text="👥 Crea filtro x Area"),
+                                    # KeyboardButton(text="👥 Crea filtro x Sott.Area"),
                                     # KeyboardButton(text="🗂 Ticket ultimi 20")
                                     ]
                                 ]

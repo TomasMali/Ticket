@@ -21,6 +21,16 @@ def insertFilter(tid, sort, sort_value ):
         sort_value =  "-" + (str(sort_value).strip())[1:]
     if getFilterByParam(tid, sort, sort_value):
         return False
+    
+    # Can insert more than one Area
+    if sort == 'A':
+        if exists_area_for_user(tid):
+            return False
+        
+    # Can insert more than one Sub_Area
+    if sort == 'S':
+        if exists_sub_area_for_user(tid):
+            return False
 
     connection = getConn()
     cursor = connection.cursor()
@@ -37,6 +47,44 @@ def insertFilter(tid, sort, sort_value ):
     closeConnection(connection,cursor)
     return True
 
+def exists_area_for_user(tid):
+    connection = getConn()
+    cursor = connection.cursor()
+    
+    postgreSQL_select_Query = "select * from filters where tid =" + str(tid) + " AND sort = 'A'"
+ 
+    cursor.execute(postgreSQL_select_Query)
+    publisher_records = cursor.fetchall()
+
+    closeConnection(connection,cursor)
+    return cursor.rowcount > 0
+
+def exists_sub_area_for_user(tid):
+    connection = getConn()
+    cursor = connection.cursor()
+    
+    postgreSQL_select_Query = "select * from filters where tid =" + str(tid) + " AND sort = 'S'"
+ 
+    cursor.execute(postgreSQL_select_Query)
+    publisher_records = cursor.fetchall()
+
+    closeConnection(connection,cursor)
+
+    return cursor.rowcount > 0
+
+
+
+def get_area_from_tid(tid):
+    connection = getConn()
+    cursor = connection.cursor()
+
+    postgreSQL_select_Query = "select sort_value  from filters where sort = 'A' and  tid =" + str(tid)
+ 
+    cursor.execute(postgreSQL_select_Query)
+    publisher_records = cursor.fetchall()
+    
+    closeConnection(connection,cursor)
+    return publisher_records
 
 # Returns all the filters inserted by a user
 def getFilters(tid):
@@ -111,4 +159,3 @@ def deleteFilter(telid, id):
 
 #getFilters(965744443)
 #deleteFilter(8)
-# print(getFilters(145645559))
